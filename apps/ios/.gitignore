@@ -1,0 +1,8 @@
+.DS_Store
+.build/
+DerivedData/
+
+# Xcode 用户级状态
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint

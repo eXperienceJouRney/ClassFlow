@@ -1,0 +1,807 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 90;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000000000000000170000001 /* ClassFlowWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 000000000000000000000320 /* ClassFlowWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		000000000000000320000001 /* ClassFlowWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000401 /* ClassFlowWidgetBundle.swift */; };
+		000000000000000320000002 /* ClassFlowWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000402 /* ClassFlowWidgets.swift */; };
+		000000000000000320000003 /* ClassFlow/Models/AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000403 /* ClassFlow/Models/AppPreferences.swift */; };
+		000000000000000320000004 /* ClassFlow/Models/CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000404 /* ClassFlow/Models/CalendarDate.swift */; };
+		000000000000000320000005 /* ClassFlow/Models/ClassOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000405 /* ClassFlow/Models/ClassOccurrence.swift */; };
+		000000000000000320000006 /* ClassFlow/Models/ClassPeriodTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000406 /* ClassFlow/Models/ClassPeriodTime.swift */; };
+		000000000000000320000007 /* ClassFlow/Models/ClassTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000407 /* ClassFlow/Models/ClassTime.swift */; };
+		000000000000000320000008 /* ClassFlow/Models/Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000408 /* ClassFlow/Models/Course.swift */; };
+		000000000000000320000009 /* ClassFlow/Models/CourseScheduleSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000409 /* ClassFlow/Models/CourseScheduleSummary.swift */; };
+		000000000000000320000010 /* ClassFlow/Models/CourseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000410 /* ClassFlow/Models/CourseTask.swift */; };
+		000000000000000320000011 /* ClassFlow/Models/ImportConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000411 /* ClassFlow/Models/ImportConflict.swift */; };
+		000000000000000320000012 /* ClassFlow/Models/ImportDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000412 /* ClassFlow/Models/ImportDraft.swift */; };
+		000000000000000320000013 /* ClassFlow/Models/ImportDraftEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000413 /* ClassFlow/Models/ImportDraftEntry.swift */; };
+		000000000000000320000014 /* ClassFlow/Models/Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000414 /* ClassFlow/Models/Memo.swift */; };
+		000000000000000320000015 /* ClassFlow/Models/ScheduleConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000415 /* ClassFlow/Models/ScheduleConflict.swift */; };
+		000000000000000320000016 /* ClassFlow/Models/ScheduleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000416 /* ClassFlow/Models/ScheduleDisplay.swift */; };
+		000000000000000320000017 /* ClassFlow/Models/ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000417 /* ClassFlow/Models/ScheduleEntry.swift */; };
+		000000000000000320000018 /* ClassFlow/Models/ScheduleGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000418 /* ClassFlow/Models/ScheduleGridLayout.swift */; };
+		000000000000000320000019 /* ClassFlow/Models/Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000419 /* ClassFlow/Models/Semester.swift */; };
+		000000000000000320000020 /* ClassFlow/Models/String+Normalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000420 /* ClassFlow/Models/String+Normalization.swift */; };
+		000000000000000320000021 /* ClassFlow/Models/TaskDueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000421 /* ClassFlow/Models/TaskDueText.swift */; };
+		000000000000000320000022 /* ClassFlow/Models/TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000422 /* ClassFlow/Models/TaskStatus.swift */; };
+		000000000000000320000023 /* ClassFlow/Models/TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000423 /* ClassFlow/Models/TimeOfDay.swift */; };
+		000000000000000320000024 /* ClassFlow/Models/TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000424 /* ClassFlow/Models/TimeRange.swift */; };
+		000000000000000320000025 /* ClassFlow/Models/Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000425 /* ClassFlow/Models/Timetable.swift */; };
+		000000000000000320000026 /* ClassFlow/Models/ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000426 /* ClassFlow/Models/ValidationError.swift */; };
+		000000000000000320000027 /* ClassFlow/Models/WeekPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000427 /* ClassFlow/Models/WeekPattern.swift */; };
+		000000000000000320000028 /* ClassFlow/Models/WeekRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000428 /* ClassFlow/Models/WeekRule.swift */; };
+		000000000000000320000029 /* ClassFlow/Models/WeekSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000429 /* ClassFlow/Models/WeekSelection.swift */; };
+		000000000000000320000030 /* ClassFlow/Models/Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000430 /* ClassFlow/Models/Weekday.swift */; };
+		000000000000000320000031 /* ClassFlow/Models/WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000431 /* ClassFlow/Models/WidgetSnapshot.swift */; };
+		000000000000000320000032 /* ClassFlow/Services/AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000432 /* ClassFlow/Services/AppData.swift */; };
+		000000000000000320000033 /* ClassFlow/Services/AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000433 /* ClassFlow/Services/AppDataStore.swift */; };
+		000000000000000320000034 /* ClassFlow/Services/Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000434 /* ClassFlow/Services/Inputs.swift */; };
+		000000000000000320000035 /* ClassFlow/Services/WidgetSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000435 /* ClassFlow/Services/WidgetSnapshotStore.swift */; };
+		000000000000000320000036 /* ClassFlow/Views/Widget/NextClassCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000436 /* ClassFlow/Views/Widget/NextClassCards.swift */; };
+		000000000000000320000037 /* ClassFlow/Views/Widget/TodayCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000437 /* ClassFlow/Views/Widget/TodayCards.swift */; };
+		000000000000000320000038 /* ClassFlow/Views/Widget/TodoMemoCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000438 /* ClassFlow/Views/Widget/TodoMemoCards.swift */; };
+		000000000000000320000039 /* ClassFlow/Views/Widget/WeekCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000439 /* ClassFlow/Views/Widget/WeekCard.swift */; };
+		000000000000000320000040 /* ClassFlow/Views/Widget/WidgetChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000440 /* ClassFlow/Views/Widget/WidgetChrome.swift */; };
+		000000000000000320000041 /* ClassFlow/Views/Widget/WidgetCourseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000441 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */; };
+		000000000000000320000042 /* ClassFlow/Views/Widget/WidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000442 /* ClassFlow/Views/Widget/WidgetIntents.swift */; };
+		000000000000000320000043 /* ClassFlow/Views/Widget/WidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000443 /* ClassFlow/Views/Widget/WidgetTimeline.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		000000000000000160000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000300000000;
+			remoteInfo = ClassFlowWidget;
+		};
+		000000000000000260000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000100000000;
+			remoteInfo = ClassFlow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		000000000000000170000000 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				000000000000000170000001 /* ClassFlowWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		000000000000000000000120 /* ClassFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000220 /* ClassFlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000320 /* ClassFlowWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClassFlowWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000401 /* ClassFlowWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlowWidgetBundle.swift; sourceTree = "<group>"; };
+		000000000000000000000402 /* ClassFlowWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlowWidgets.swift; sourceTree = "<group>"; };
+		000000000000000000000403 /* ClassFlow/Models/AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/AppPreferences.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000404 /* ClassFlow/Models/CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CalendarDate.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000405 /* ClassFlow/Models/ClassOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassOccurrence.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000406 /* ClassFlow/Models/ClassPeriodTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassPeriodTime.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000407 /* ClassFlow/Models/ClassTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassTime.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000408 /* ClassFlow/Models/Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Course.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000409 /* ClassFlow/Models/CourseScheduleSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CourseScheduleSummary.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000410 /* ClassFlow/Models/CourseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CourseTask.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000411 /* ClassFlow/Models/ImportConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportConflict.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000412 /* ClassFlow/Models/ImportDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportDraft.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000413 /* ClassFlow/Models/ImportDraftEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportDraftEntry.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000414 /* ClassFlow/Models/Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Memo.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000415 /* ClassFlow/Models/ScheduleConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleConflict.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000416 /* ClassFlow/Models/ScheduleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleDisplay.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000417 /* ClassFlow/Models/ScheduleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleEntry.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000418 /* ClassFlow/Models/ScheduleGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleGridLayout.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000419 /* ClassFlow/Models/Semester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Semester.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000420 /* ClassFlow/Models/String+Normalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassFlow/Models/String+Normalization.swift"; sourceTree = SOURCE_ROOT; };
+		000000000000000000000421 /* ClassFlow/Models/TaskDueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TaskDueText.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000422 /* ClassFlow/Models/TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TaskStatus.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000423 /* ClassFlow/Models/TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TimeOfDay.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000424 /* ClassFlow/Models/TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TimeRange.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000425 /* ClassFlow/Models/Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Timetable.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000426 /* ClassFlow/Models/ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ValidationError.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000427 /* ClassFlow/Models/WeekPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekPattern.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000428 /* ClassFlow/Models/WeekRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekRule.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000429 /* ClassFlow/Models/WeekSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekSelection.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000430 /* ClassFlow/Models/Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Weekday.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000431 /* ClassFlow/Models/WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WidgetSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000432 /* ClassFlow/Services/AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/AppData.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000433 /* ClassFlow/Services/AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/AppDataStore.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000434 /* ClassFlow/Services/Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/Inputs.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000435 /* ClassFlow/Services/WidgetSnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/WidgetSnapshotStore.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000436 /* ClassFlow/Views/Widget/NextClassCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/NextClassCards.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000437 /* ClassFlow/Views/Widget/TodayCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/TodayCards.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000438 /* ClassFlow/Views/Widget/TodoMemoCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/TodoMemoCards.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000439 /* ClassFlow/Views/Widget/WeekCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WeekCard.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000440 /* ClassFlow/Views/Widget/WidgetChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetChrome.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000441 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetCourseColor.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000442 /* ClassFlow/Views/Widget/WidgetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetIntents.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000443 /* ClassFlow/Views/Widget/WidgetTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetTimeline.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000000000000000000000499 /* ClassFlowWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClassFlowWidget.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		000000000000000000000010 /* ClassFlow */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClassFlow;
+			sourceTree = "<group>";
+		};
+		000000000000000000000030 /* ClassFlowTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClassFlowTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000000000000130000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		000000000000000230000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		000000000000000330000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000010 /* ClassFlow */,
+				000000000000000000000030 /* ClassFlowTests */,
+				000000000000000000000040 /* ClassFlowWidget */,
+				000000000000000000000020 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000120 /* ClassFlow.app */,
+				000000000000000000000220 /* ClassFlowTests.xctest */,
+				000000000000000000000320 /* ClassFlowWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		000000000000000000000040 /* ClassFlowWidget */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000401 /* ClassFlowWidgetBundle.swift */,
+				000000000000000000000402 /* ClassFlowWidgets.swift */,
+				000000000000000000000403 /* ClassFlow/Models/AppPreferences.swift */,
+				000000000000000000000404 /* ClassFlow/Models/CalendarDate.swift */,
+				000000000000000000000405 /* ClassFlow/Models/ClassOccurrence.swift */,
+				000000000000000000000406 /* ClassFlow/Models/ClassPeriodTime.swift */,
+				000000000000000000000407 /* ClassFlow/Models/ClassTime.swift */,
+				000000000000000000000408 /* ClassFlow/Models/Course.swift */,
+				000000000000000000000409 /* ClassFlow/Models/CourseScheduleSummary.swift */,
+				000000000000000000000410 /* ClassFlow/Models/CourseTask.swift */,
+				000000000000000000000411 /* ClassFlow/Models/ImportConflict.swift */,
+				000000000000000000000412 /* ClassFlow/Models/ImportDraft.swift */,
+				000000000000000000000413 /* ClassFlow/Models/ImportDraftEntry.swift */,
+				000000000000000000000414 /* ClassFlow/Models/Memo.swift */,
+				000000000000000000000415 /* ClassFlow/Models/ScheduleConflict.swift */,
+				000000000000000000000416 /* ClassFlow/Models/ScheduleDisplay.swift */,
+				000000000000000000000417 /* ClassFlow/Models/ScheduleEntry.swift */,
+				000000000000000000000418 /* ClassFlow/Models/ScheduleGridLayout.swift */,
+				000000000000000000000419 /* ClassFlow/Models/Semester.swift */,
+				000000000000000000000420 /* ClassFlow/Models/String+Normalization.swift */,
+				000000000000000000000421 /* ClassFlow/Models/TaskDueText.swift */,
+				000000000000000000000422 /* ClassFlow/Models/TaskStatus.swift */,
+				000000000000000000000423 /* ClassFlow/Models/TimeOfDay.swift */,
+				000000000000000000000424 /* ClassFlow/Models/TimeRange.swift */,
+				000000000000000000000425 /* ClassFlow/Models/Timetable.swift */,
+				000000000000000000000426 /* ClassFlow/Models/ValidationError.swift */,
+				000000000000000000000427 /* ClassFlow/Models/WeekPattern.swift */,
+				000000000000000000000428 /* ClassFlow/Models/WeekRule.swift */,
+				000000000000000000000429 /* ClassFlow/Models/WeekSelection.swift */,
+				000000000000000000000430 /* ClassFlow/Models/Weekday.swift */,
+				000000000000000000000431 /* ClassFlow/Models/WidgetSnapshot.swift */,
+				000000000000000000000432 /* ClassFlow/Services/AppData.swift */,
+				000000000000000000000433 /* ClassFlow/Services/AppDataStore.swift */,
+				000000000000000000000434 /* ClassFlow/Services/Inputs.swift */,
+				000000000000000000000435 /* ClassFlow/Services/WidgetSnapshotStore.swift */,
+				000000000000000000000436 /* ClassFlow/Views/Widget/NextClassCards.swift */,
+				000000000000000000000437 /* ClassFlow/Views/Widget/TodayCards.swift */,
+				000000000000000000000438 /* ClassFlow/Views/Widget/TodoMemoCards.swift */,
+				000000000000000000000439 /* ClassFlow/Views/Widget/WeekCard.swift */,
+				000000000000000000000440 /* ClassFlow/Views/Widget/WidgetChrome.swift */,
+				000000000000000000000441 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */,
+				000000000000000000000442 /* ClassFlow/Views/Widget/WidgetIntents.swift */,
+				000000000000000000000443 /* ClassFlow/Views/Widget/WidgetTimeline.swift */,
+				000000000000000000000498 /* Info.plist */,
+				000000000000000000000499 /* ClassFlowWidget.entitlements */,
+			);
+			path = ClassFlowWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000100000000 /* ClassFlow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000110000000 /* Build configuration list for PBXNativeTarget "ClassFlow" */;
+			buildPhases = (
+				000000000000000120000000 /* Sources */,
+				000000000000000130000000 /* Frameworks */,
+				000000000000000140000000 /* Resources */,
+				000000000000000170000000 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				000000000000000150000000 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				000000000000000000000010 /* ClassFlow */,
+			);
+			name = ClassFlow;
+			productName = MyApp;
+			productReference = 000000000000000000000120 /* ClassFlow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		000000000000000200000000 /* ClassFlowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000210000000 /* Build configuration list for PBXNativeTarget "ClassFlowTests" */;
+			buildPhases = (
+				000000000000000220000000 /* Sources */,
+				000000000000000230000000 /* Frameworks */,
+				000000000000000240000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				000000000000000250000000 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				000000000000000000000030 /* ClassFlowTests */,
+			);
+			name = ClassFlowTests;
+			productName = ClassFlowTests;
+			productReference = 000000000000000000000220 /* ClassFlowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		000000000000000300000000 /* ClassFlowWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000310000000 /* Build configuration list for PBXNativeTarget "ClassFlowWidget" */;
+			buildPhases = (
+				000000000000000320000000 /* Sources */,
+				000000000000000330000000 /* Frameworks */,
+				000000000000000340000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			name = ClassFlowWidget;
+			productName = ClassFlowWidget;
+			productReference = 000000000000000000000320 /* ClassFlowWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					000000000000000100000000 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					000000000000000200000000 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 000000000000000100000000;
+					};
+					000000000000000300000000 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+				};
+			};
+			buildConfigurationList = 000000000000000010000000 /* Build configuration list for PBXProject "ClassFlow" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000000000000000000000001;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 90;
+			productRefGroup = 000000000000000000000020 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000000000000100000000 /* ClassFlow */,
+				000000000000000200000000 /* ClassFlowTests */,
+				000000000000000300000000 /* ClassFlowWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000000000000000140000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		000000000000000240000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		000000000000000340000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000000000000120000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		000000000000000220000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		000000000000000320000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				000000000000000320000001 /* ClassFlowWidgetBundle.swift in Sources */,
+				000000000000000320000002 /* ClassFlowWidgets.swift in Sources */,
+				000000000000000320000003 /* ClassFlow/Models/AppPreferences.swift in Sources */,
+				000000000000000320000004 /* ClassFlow/Models/CalendarDate.swift in Sources */,
+				000000000000000320000005 /* ClassFlow/Models/ClassOccurrence.swift in Sources */,
+				000000000000000320000006 /* ClassFlow/Models/ClassPeriodTime.swift in Sources */,
+				000000000000000320000007 /* ClassFlow/Models/ClassTime.swift in Sources */,
+				000000000000000320000008 /* ClassFlow/Models/Course.swift in Sources */,
+				000000000000000320000009 /* ClassFlow/Models/CourseScheduleSummary.swift in Sources */,
+				000000000000000320000010 /* ClassFlow/Models/CourseTask.swift in Sources */,
+				000000000000000320000011 /* ClassFlow/Models/ImportConflict.swift in Sources */,
+				000000000000000320000012 /* ClassFlow/Models/ImportDraft.swift in Sources */,
+				000000000000000320000013 /* ClassFlow/Models/ImportDraftEntry.swift in Sources */,
+				000000000000000320000014 /* ClassFlow/Models/Memo.swift in Sources */,
+				000000000000000320000015 /* ClassFlow/Models/ScheduleConflict.swift in Sources */,
+				000000000000000320000016 /* ClassFlow/Models/ScheduleDisplay.swift in Sources */,
+				000000000000000320000017 /* ClassFlow/Models/ScheduleEntry.swift in Sources */,
+				000000000000000320000018 /* ClassFlow/Models/ScheduleGridLayout.swift in Sources */,
+				000000000000000320000019 /* ClassFlow/Models/Semester.swift in Sources */,
+				000000000000000320000020 /* ClassFlow/Models/String+Normalization.swift in Sources */,
+				000000000000000320000021 /* ClassFlow/Models/TaskDueText.swift in Sources */,
+				000000000000000320000022 /* ClassFlow/Models/TaskStatus.swift in Sources */,
+				000000000000000320000023 /* ClassFlow/Models/TimeOfDay.swift in Sources */,
+				000000000000000320000024 /* ClassFlow/Models/TimeRange.swift in Sources */,
+				000000000000000320000025 /* ClassFlow/Models/Timetable.swift in Sources */,
+				000000000000000320000026 /* ClassFlow/Models/ValidationError.swift in Sources */,
+				000000000000000320000027 /* ClassFlow/Models/WeekPattern.swift in Sources */,
+				000000000000000320000028 /* ClassFlow/Models/WeekRule.swift in Sources */,
+				000000000000000320000029 /* ClassFlow/Models/WeekSelection.swift in Sources */,
+				000000000000000320000030 /* ClassFlow/Models/Weekday.swift in Sources */,
+				000000000000000320000031 /* ClassFlow/Models/WidgetSnapshot.swift in Sources */,
+				000000000000000320000032 /* ClassFlow/Services/AppData.swift in Sources */,
+				000000000000000320000033 /* ClassFlow/Services/AppDataStore.swift in Sources */,
+				000000000000000320000034 /* ClassFlow/Services/Inputs.swift in Sources */,
+				000000000000000320000035 /* ClassFlow/Services/WidgetSnapshotStore.swift in Sources */,
+				000000000000000320000036 /* ClassFlow/Views/Widget/NextClassCards.swift in Sources */,
+				000000000000000320000037 /* ClassFlow/Views/Widget/TodayCards.swift in Sources */,
+				000000000000000320000038 /* ClassFlow/Views/Widget/TodoMemoCards.swift in Sources */,
+				000000000000000320000039 /* ClassFlow/Views/Widget/WeekCard.swift in Sources */,
+				000000000000000320000040 /* ClassFlow/Views/Widget/WidgetChrome.swift in Sources */,
+				000000000000000320000041 /* ClassFlow/Views/Widget/WidgetCourseColor.swift in Sources */,
+				000000000000000320000042 /* ClassFlow/Views/Widget/WidgetIntents.swift in Sources */,
+				000000000000000320000043 /* ClassFlow/Views/Widget/WidgetTimeline.swift in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		000000000000000150000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000300000000 /* ClassFlowWidget */;
+			targetProxy = 000000000000000160000000 /* PBXContainerItemProxy */;
+		};
+		000000000000000250000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000100000000 /* ClassFlow */;
+			targetProxy = 000000000000000260000000 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		000000000000000011000000 /* Debug configuration for PBXProject "ClassFlow" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DRIVERKIT_DEPLOYMENT_TARGET = 27.0;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROJECT_UNIQUE_VALUE = TB2H6BRH;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 27.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Debug;
+		};
+		000000000000000012000000 /* Release configuration for PBXProject "ClassFlow" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DRIVERKIT_DEPLOYMENT_TARGET = 27.0;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PROJECT_UNIQUE_VALUE = TB2H6BRH;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TVOS_DEPLOYMENT_TARGET = 27.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Release;
+		};
+		000000000000000111000000 /* Debug configuration for PBXNativeTarget "ClassFlow" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClassFlow/ClassFlow.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PVAPR495F;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ClassFlow-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ClassFlow;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuhanbingyanonlinetechnologycoltd.ClassFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		000000000000000112000000 /* Release configuration for PBXNativeTarget "ClassFlow" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClassFlow/ClassFlow.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PVAPR495F;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ClassFlow-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ClassFlow;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuhanbingyanonlinetechnologycoltd.ClassFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		000000000000000211000000 /* Debug configuration for PBXNativeTarget "ClassFlowTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PVAPR495F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuhanbingyanonlinetechnologycoltd.ClassFlowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClassFlow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ClassFlow";
+			};
+			name = Debug;
+		};
+		000000000000000212000000 /* Release configuration for PBXNativeTarget "ClassFlowTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PVAPR495F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuhanbingyanonlinetechnologycoltd.ClassFlowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClassFlow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ClassFlow";
+			};
+			name = Release;
+		};
+		000000000000000311000000 /* Debug configuration for PBXNativeTarget "ClassFlowWidget" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ClassFlowWidget/ClassFlowWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PVAPR495F;
+				ENABLE_APP_SANDBOX = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ClassFlowWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ClassFlow Widget";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuhanbingyanonlinetechnologycoltd.ClassFlow.ClassFlowWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		000000000000000312000000 /* Release configuration for PBXNativeTarget "ClassFlowWidget" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ClassFlowWidget/ClassFlowWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PVAPR495F;
+				ENABLE_APP_SANDBOX = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ClassFlowWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ClassFlow Widget";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wuhanbingyanonlinetechnologycoltd.ClassFlow.ClassFlowWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000000000000000010000000 /* Build configuration list for PBXProject "ClassFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000011000000 /* Debug configuration for PBXProject "ClassFlow" */,
+				000000000000000012000000 /* Release configuration for PBXProject "ClassFlow" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		000000000000000110000000 /* Build configuration list for PBXNativeTarget "ClassFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000111000000 /* Debug configuration for PBXNativeTarget "ClassFlow" */,
+				000000000000000112000000 /* Release configuration for PBXNativeTarget "ClassFlow" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		000000000000000210000000 /* Build configuration list for PBXNativeTarget "ClassFlowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000211000000 /* Debug configuration for PBXNativeTarget "ClassFlowTests" */,
+				000000000000000212000000 /* Release configuration for PBXNativeTarget "ClassFlowTests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		000000000000000310000000 /* Build configuration list for PBXNativeTarget "ClassFlowWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000311000000 /* Debug configuration for PBXNativeTarget "ClassFlowWidget" */,
+				000000000000000312000000 /* Release configuration for PBXNativeTarget "ClassFlowWidget" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000000 /* Project object */;
+}

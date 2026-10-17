@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  主 App 的 Info.plist「补丁」——只放无法用 INFOPLIST_KEY_* 生成设置表达的部分：
+  CFBundleURLTypes（classflow:// 深链，桌面组件点进来靠它拉起 App）。
+
+  文件刻意放在 ClassFlow/ 同步组之外（同步组是 ClassFlow/ClassFlow/ 这一层），
+  免得被当成资源重复拷贝；其余键仍然由 GENERATE_INFOPLIST_FILE = YES 与
+  INFOPLIST_KEY_* 生成后合并进来，所以这里不要写 CFBundleExecutable 之类的键。
+-->
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.wuhanbingyanonlinetechnologycoltd.ClassFlow</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>classflow</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

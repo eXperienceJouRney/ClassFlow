@@ -1,3 +1,44 @@
+# macOS
 .DS_Store
+
+# Xcode / Swift 构建产物
 .build/
 .build-import/
+
+# Python
+__pycache__/
+*.pyc
+
+# 本地归档：历史 bundle、废弃分支快照，不入库
+.archive/
+
+# 本地文档：过程文档与设计稿不入库，docs/ 下只保留 NABCD.md
+/docs/classflow-docs/
+/docs/design/
+/docs/learning/
+/docs/parallel/
+/CONTRIBUTING.md
+
+# 本地素材：真实课表含他人姓名与班级信息，演示数据同理
+/assets/
+
+# 本地测试：测试 target 是文件夹同步组，本地存在即可参与编译
+/apps/ios/ClassFlowTests/
+
+# 本地鸿蒙端工程：暂不入库
+/apps/harmony/
+
+# 本地跨端契约文档：不入库
+/shared/
+
+# 本地开发脚本：仓库只保留构建与自检用的 4 个
+/Scripts/capture-demo-screenshots.sh
+/Scripts/design-spec-extract.swift
+/Scripts/make-24zhike-import.py
+/Scripts/make-appicon.swift
+/Scripts/make-demo-data.swift
+/Scripts/make-import-fixtures.py
+/Scripts/ocr-image.swift
+/Scripts/seed-24zhike-simulator.swift
+/Scripts/verify-24zhike-import.swift
+/Scripts/verify-import-fixtures.swift

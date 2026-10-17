@@ -89,46 +89,35 @@ ClassFlow 的核心理念是：
 
 ## 项目文档
 
-项目相关文档将统一维护在 `docs/` 目录中。
+仓库只保留代码与最小说明：需求分析、系统设计、还原规格、跨端契约等文档在本地维护，不入库。
 
 ```text
 docs/
-├── NABCD.md
-├── requirements/
-├── design/
-└── ...
+└── NABCD.md
 ```
 
-目前已有：
-
 - [NABCD 分析](./docs/NABCD.md)
-
-后续将逐步补充：
-
-- 需求分析
-- 用户故事
-- 原型设计
-- 系统设计
-- 数据模型设计
-- 测试文档
-- 项目总结
 
 ---
 
 ## 项目结构
 
-当前项目仍处于初始化阶段，目录结构会随着开发逐步完善。
-
-预计结构：
+iOS 端已完成主 App 与桌面小组件。
 
 ```text
-ClassFlow/
-├── ClassFlow/
-├── ClassFlowTests/
+classflow/
+├── apps/
+│   └── ios/
+│       ├── ClassFlow/          主 App（Models / Services / Views / Components / Platform）
+│       ├── ClassFlowWidget/    WidgetKit 扩展
+│       └── ClassFlow.xcodeproj
 ├── docs/
-├── README.md
-└── ...
+│   └── NABCD.md
+├── Scripts/                    构建、验证与自检脚本
+└── README.md
 ```
+
+iOS 端的架构、分层规则与构建方式见 [apps/ios/README.md](./apps/ios/README.md)。
 
 ---
 
@@ -152,20 +141,18 @@ ClassFlow/
 
 当前阶段：
 
-**需求分析与产品设计**
+**开发实现与迭代**
 
 ---
 
 ## 技术栈
 
-项目计划采用原生 iOS 技术进行开发。
+| 端 | 目录 | 技术栈 |
+|---|---|---|
+| iOS | `apps/ios/` | Swift 6 / SwiftUI / WidgetKit |
 
-- Platform: iOS
-- Language: Swift
-- UI: SwiftUI
-- Version Control: Git & GitHub
-
-具体技术方案可能会随着项目开发进行调整。
+- 存储：App Group 容器内的 JSON 快照（`AppData`）。
+- Version Control: Git，双远端（GitHub / Gitee）。
 
 ---
 

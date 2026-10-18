@@ -95,7 +95,10 @@ final class FileDataStore: AppDataStore {
             throw StoreError.loadFailed(reason: String(describing: error))
         }
 
-        if WidgetSnapshotStore.needsRefresh(snapshotURL: widgetSnapshotURL(), dataURL: url) {
+        // 快照缺失 / 比数据旧，或者已经隔夜（`today` 不是今天）→ 补写一次。
+        let snapshotURL = widgetSnapshotURL()
+        if WidgetSnapshotStore.needsRefresh(snapshotURL: snapshotURL, dataURL: url)
+            || WidgetSnapshotStore.isStaleDay(at: snapshotURL) {
             refreshWidgetSnapshot(data)
         }
 
@@ -111,8 +114,13 @@ final class FileDataStore: AppDataStore {
         }
 
         if let existing = try? Data(contentsOf: url),
-           existing == payload,
-           !WidgetSnapshotStore.needsRefresh(snapshotURL: widgetSnapshotURL(), dataURL: url) {
+           existing == payload {
+            // 内容没变时连数据文件都不重写；但快照可能已经隔夜，仍需重算一次。
+            let snapshotURL = widgetSnapshotURL()
+            if WidgetSnapshotStore.needsRefresh(snapshotURL: snapshotURL, dataURL: url)
+                || WidgetSnapshotStore.isStaleDay(at: snapshotURL) {
+                refreshWidgetSnapshot(data)
+            }
             return
         }
 

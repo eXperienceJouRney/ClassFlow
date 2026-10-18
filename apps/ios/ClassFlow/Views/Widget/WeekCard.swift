@@ -5,6 +5,7 @@ import WidgetKit
 // MARK: - 组件 03：本周课表 · 大尺寸
 
 /// 一周课程网格：横向周一–周日，纵向固定 8 行课节，窗口按当前时间滑动。
+/// 窗口边界避开课块，不把任何一门课切成半截。
 /// 课程卡片按节次区间占位并自动分栏，点击整卡打开主 App 对应周课表。
 struct WeekTimetableEntryView: View {
 
@@ -180,7 +181,8 @@ extension WeekTimetableEntryView {
 
     private func gridBody(_ grid: WidgetWeekGrid, size: CGSize) -> some View {
         // 八行窗口：窗口恒为 8 行，课节不足 8 节时窗口即整份纵轴，那几行摊满、不补空行。
-        let window = WidgetWeekWindow.range(in: grid.periods, at: entry.date)
+        // 窗口边界按整周课块避让，见 `WidgetWeekWindow`。
+        let window = WidgetWeekWindow.range(in: grid.periods, courses: grid.courses, at: entry.date)
         let periods = Array(grid.periods[window])
         let rowCount = max(periods.count, 1)
         let rowHeight = max(size.height / CGFloat(rowCount), 14)

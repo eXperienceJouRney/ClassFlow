@@ -23,7 +23,7 @@ struct ClassFlowWidgetEntryProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ClassFlowWidgetEntry>) -> Void) {
         let now = Date()
-        let snapshot = Self.loadSnapshot()
+        let snapshot = Self.loadSnapshot(now: now)
         let weekOffset = WidgetSnapshotStore.weekOffset()
         let dates = WidgetTimeline.entryDates(
             from: now,
@@ -48,18 +48,25 @@ extension ClassFlowWidgetEntryProvider {
     private func entry(at now: Date) -> ClassFlowWidgetEntry {
         ClassFlowWidgetEntry(
             date: now,
-            snapshot: Self.loadSnapshot(),
+            snapshot: Self.loadSnapshot(now: now),
             weekOffset: WidgetSnapshotStore.weekOffset()
         )
     }
 
-    /// 读共享容器里的快照；缺失或解析失败一律返回空快照。
-    static func loadSnapshot() -> WidgetSnapshot {
-        guard let url = WidgetSnapshotStore.fileURL(),
-              let snapshot = WidgetSnapshotStore.load(from: url)
-        else { return .empty }
+    /// 读共享容器里的快照；快照不是今天就按主 App 的数据就地重算并写回（跨天自愈）。
+    /// 数据文件读不到时退回旧快照，卡片不至于因为重算失败变空。
+    static func loadSnapshot(now: Date = Date()) -> WidgetSnapshot {
+        let dataURL = FileDataStore.defaultURL()
+        // 共享容器不可用时退回 App 自己的目录：数据与快照必须用同一个兜底，路径才对得上。
+        guard let snapshotURL = WidgetSnapshotStore.fileURL(
+            fallbackDirectory: dataURL.deletingLastPathComponent()
+        ) else { return .empty }
 
-        return snapshot
+        return WidgetSnapshotStore.snapshotForWidget(
+            dataURL: dataURL,
+            snapshotURL: snapshotURL,
+            now: now
+        )
     }
 }
 

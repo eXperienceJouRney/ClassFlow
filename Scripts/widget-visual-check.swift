@@ -420,7 +420,8 @@ func format(_ value: Double) -> String {
 // MARK: - 真实课表那一档的素材（大课表 · 12 节 + 长教室名）
 
 /// 真实课表第 6 周（2026-10-12 ~ 10-18）：纵轴 12 节带 `startMinute`；
-/// `03b` / `03c` 共用这份快照、只换时刻，分别覆盖窗口 1–8 与 5–12。
+/// `03b` / `03c` / `03d` 共用这份快照、只换时刻，分别覆盖 08:00（1–8）、20:00（5–12）
+/// 与 14:00（仍停在 1–8，不滑成 2–9）。
 @MainActor
 func realWeekSnapshot() -> (snapshot: WidgetSnapshot, monday: Date) {
     var calendar = Calendar(identifier: .gregorian)
@@ -765,6 +766,30 @@ func run() throws {
             above: [("14:00", "14:45"), ("18:30", "19:15"), ("21:15", "22:00")]
         ),
         WeekTimetableEntryView(entry: ClassFlowWidgetEntry(date: moment(20, 0), snapshot: realSnapshot))
+    )
+
+    // ── 03d 本周课表 · 真实课表 · 下午那一档（窗口仍停在 1–8）
+    //
+    // 旧规则 14:00 会滑到 2–9：第 1–2 节的课只剩第 2 节，左轴第一行变成 08:55。
+    // 新规则发现 2–9 会把第 1–2 节切半（3–10 又会切晚课 9–12），于是停在 1–8。
+    // 这条专门盯「换页不割裂课程」：08:00 / 08:45 必须在，18:30（第 9 节）必须不在。
+    add(
+        CardCheck(
+            name: "03d-week-timetable-real-afternoon",
+            size: largeSize,
+            background: lightBackground,
+            style: .light,
+            fragments: [
+                "第 6 周", "计算机", "图形学", "西十二楼", "S401",
+                "08:00", "08:45", "16:55", "17:40",
+            ],
+            absent: ["计算机大楼", "2048", "18:30", "22:00"],
+            untruncated: ["西十二楼", "S401"],
+            divider: lightDivider,
+            chromatic: [("蓝系课程块", .blueish, 0.01)],
+            above: [("08:00", "08:45"), ("16:55", "17:40")]
+        ),
+        WeekTimetableEntryView(entry: ClassFlowWidgetEntry(date: moment(14, 0), snapshot: realSnapshot))
     )
 
     // ── 04 课程待办 · 中

@@ -70,7 +70,7 @@ enum WidgetSnapshotStore {
     }
 }
 
-// MARK: - 快照生成（App 侧）
+// MARK: - 快照生成与读取（主 App 写、组件跨天自愈时重写）
 
 extension WidgetSnapshotStore {
 
@@ -144,6 +144,37 @@ extension WidgetSnapshotStore {
         return write(data, to: url, now: now, calendar: calendar, reloading: kinds)
     }
 
+    /// 组件侧取快照：文件里的 `today` 不是今天就按数据文件重算一次并写回。
+    /// 主 App 一整天没被打开时，组件靠这份重算跨过零点，不会一直画昨天的课。
+    /// 数据文件读不到时退回旧快照（再不行才空快照），绝不因为重算失败把卡片清空。
+    static func snapshotForWidget(
+        dataURL: URL,
+        snapshotURL: URL,
+        now: Date = Date(),
+        calendar: Calendar = .current
+    ) -> WidgetSnapshot {
+        if let snapshot = load(from: snapshotURL),
+           calendar.isDate(snapshot.today, inSameDayAs: now) {
+            return snapshot
+        }
+
+        let store = FileDataStore(url: dataURL)
+        store.widgetSnapshotDirectory = snapshotURL.deletingLastPathComponent()
+        // 时间线正是在重排中被调用的，扩展里不要再请求一轮刷新。
+        store.widgetReloadKinds = []
+
+        // 数据文件不存在 = 还没同步过来（或用户清空了数据），保留旧快照比清空卡片好。
+        guard FileManager.default.fileExists(atPath: dataURL.path),
+              let data = try? store.load()
+        else {
+            return load(from: snapshotURL) ?? WidgetSnapshot(today: calendar.startOfDay(for: now))
+        }
+
+        let snapshot = makeSnapshot(data: data, from: now, calendar: calendar)
+        try? save(snapshot, to: snapshotURL)
+        return snapshot
+    }
+
     /// 是否需要在 `load()` 之后补写快照：文件缺失或比数据文件旧。
     /// 判据失效时一律偏向跳过，避免每次 `load()` 都重算快照。
     static func needsRefresh(
@@ -156,6 +187,18 @@ extension WidgetSnapshotStore {
         guard let snapshotDate = modificationDate(of: snapshotURL, fileManager: fileManager) else { return true }
         guard let dataDate = modificationDate(of: dataURL, fileManager: fileManager) else { return true }
         return snapshotDate < dataDate
+    }
+
+    /// 快照是不是「隔夜」了：`today` / `todaySlots` / `weeks` 都按天烘焙，跨天必须重算。
+    /// 位置为空（没有共享容器也没有兜底目录）时返回 false；文件读不出按过期处理，交给调用方重写。
+    static func isStaleDay(
+        at url: URL?,
+        now: Date = Date(),
+        calendar: Calendar = .current
+    ) -> Bool {
+        guard let url else { return false }
+        guard let snapshot = load(from: url) else { return true }
+        return !calendar.isDate(snapshot.today, inSameDayAs: now)
     }
 
     /// `needsRefresh` 的便利版本：快照位置按「共享容器优先」解析。

@@ -9,19 +9,23 @@ struct AppPreferences: Codable, Hashable, Sendable {
     var timeFormat: TimeFormatPreference
     /// 周视图的课程块是否显示授课教师。
     var showsTeacherInWeekGrid: Bool
+    /// 是否按课表自动为正在上的课开启实时活动。
+    var autoStartLiveActivity: Bool
 
     init(
         defaultScheduleMode: ScheduleMode = .week,
         firstWeekday: Weekday = .monday,
         appearance: AppearancePreference = .system,
         timeFormat: TimeFormatPreference = .twentyFourHour,
-        showsTeacherInWeekGrid: Bool = true
+        showsTeacherInWeekGrid: Bool = true,
+        autoStartLiveActivity: Bool = false
     ) {
         self.defaultScheduleMode = defaultScheduleMode
         self.firstWeekday = firstWeekday
         self.appearance = appearance
         self.timeFormat = timeFormat
         self.showsTeacherInWeekGrid = showsTeacherInWeekGrid
+        self.autoStartLiveActivity = autoStartLiveActivity
     }
 
     static let `default` = AppPreferences()
@@ -35,6 +39,7 @@ extension AppPreferences {
         case appearance
         case timeFormat
         case showsTeacherInWeekGrid
+        case autoStartLiveActivity
     }
 
     /// 缺失的偏好项按默认值补齐。
@@ -52,6 +57,8 @@ extension AppPreferences {
             ?? fallback.timeFormat
         showsTeacherInWeekGrid = try container.decodeIfPresent(Bool.self, forKey: .showsTeacherInWeekGrid)
             ?? fallback.showsTeacherInWeekGrid
+        autoStartLiveActivity = try container.decodeIfPresent(Bool.self, forKey: .autoStartLiveActivity)
+            ?? fallback.autoStartLiveActivity
     }
 }
 

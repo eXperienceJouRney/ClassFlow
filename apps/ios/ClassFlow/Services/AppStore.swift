@@ -19,6 +19,11 @@ final class AppStore {
 
     private(set) var loadErrorMessage: String?
 
+    /// 数据版本号：每次成功写入或重新加载后 +1。
+    /// 供「数据一变就要重算」的观察者使用（课程时间修改、课程取消等字段级改动
+    /// 不会改变 `AppData` 的相等性，不能只靠 `onChange(of: data)`）。
+    private(set) var revision = 0
+
     init(store: AppDataStore? = nil) {
         let store = store ?? InMemoryDataStore()
         self.store = store
@@ -49,6 +54,7 @@ extension AppStore {
         }
 
         snapshot = Snapshot(value: next)
+        revision += 1
     }
 
     /// 重新从磁盘加载最新数据；主 App 回前台时须调用，以免覆盖其他进程的写入。
@@ -56,6 +62,7 @@ extension AppStore {
         do {
             snapshot = Snapshot(value: try store.load())
             loadErrorMessage = nil
+            revision += 1
         } catch {
             loadErrorMessage = String(describing: error)
         }
@@ -228,5 +235,21 @@ extension AppStore {
         calendar: Calendar = .current
     ) -> [ClassOccurrence] {
         data.timetable(for: semesterId)?.classes(on: date, calendar: calendar) ?? []
+    }
+
+    /// 当前正在上的课；没有正在上的课（或作息没配好）时为 nil。
+    func currentClassSession(
+        at moment: Date = Date(),
+        calendar: Calendar = .current
+    ) -> ClassSession? {
+        currentTimetable()?.currentSession(at: moment, calendar: calendar)
+    }
+
+    /// 这一节课之后的那一节；可以跨天，学期内没有后续课程时为 nil。
+    func nextClassSession(
+        after session: ClassSession,
+        calendar: Calendar = .current
+    ) -> ClassSession? {
+        currentTimetable()?.nextSession(after: session, calendar: calendar)
     }
 }

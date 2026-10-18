@@ -30,6 +30,7 @@ SHARED_SOURCES = [
     "ClassFlow/Services/Inputs.swift",
     "ClassFlow/Services/WidgetSnapshotStore.swift",
     *sorted(p.relative_to(PROJECT_DIR).as_posix() for p in (PROJECT_DIR / "ClassFlow" / "Views" / "Widget").glob("*.swift")),
+    *sorted(p.relative_to(PROJECT_DIR).as_posix() for p in (PROJECT_DIR / "ClassFlow" / "LiveActivity").glob("*.swift")),
 ]
 
 # 扩展自己的文件：组内相对路径。
@@ -181,6 +182,7 @@ def main() -> int:
     print(f"  模型层 {len([e for e in entries if e[1].startswith('ClassFlow/Models/')])} 个")
     print(f"  服务层 {len([e for e in entries if e[1].startswith('ClassFlow/Services/')])} 个")
     print(f"  共享卡片 {len([e for e in entries if e[1].startswith('ClassFlow/Views/')])} 个")
+    print(f"  实时活动 {len([e for e in entries if e[1].startswith('ClassFlow/LiveActivity/')])} 个")
     print(f"  扩展自身 {len(WIDGET_SOURCES)} 个")
 
     text = PBXPROJ.read_text(encoding="utf-8")

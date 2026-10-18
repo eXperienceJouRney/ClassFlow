@@ -10,47 +10,52 @@
 		000000000000000170000001 /* ClassFlowWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 000000000000000000000320 /* ClassFlowWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		000000000000000320000001 /* ClassFlowWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000401 /* ClassFlowWidgetBundle.swift */; };
 		000000000000000320000002 /* ClassFlowWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000402 /* ClassFlowWidgets.swift */; };
-		000000000000000320000003 /* ClassFlow/Models/AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000403 /* ClassFlow/Models/AppPreferences.swift */; };
-		000000000000000320000004 /* ClassFlow/Models/CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000404 /* ClassFlow/Models/CalendarDate.swift */; };
-		000000000000000320000005 /* ClassFlow/Models/ClassOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000405 /* ClassFlow/Models/ClassOccurrence.swift */; };
-		000000000000000320000006 /* ClassFlow/Models/ClassPeriodTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000406 /* ClassFlow/Models/ClassPeriodTime.swift */; };
-		000000000000000320000007 /* ClassFlow/Models/ClassTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000407 /* ClassFlow/Models/ClassTime.swift */; };
-		000000000000000320000008 /* ClassFlow/Models/Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000408 /* ClassFlow/Models/Course.swift */; };
-		000000000000000320000009 /* ClassFlow/Models/CourseScheduleSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000409 /* ClassFlow/Models/CourseScheduleSummary.swift */; };
-		000000000000000320000010 /* ClassFlow/Models/CourseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000410 /* ClassFlow/Models/CourseTask.swift */; };
-		000000000000000320000011 /* ClassFlow/Models/ImportConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000411 /* ClassFlow/Models/ImportConflict.swift */; };
-		000000000000000320000012 /* ClassFlow/Models/ImportDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000412 /* ClassFlow/Models/ImportDraft.swift */; };
-		000000000000000320000013 /* ClassFlow/Models/ImportDraftEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000413 /* ClassFlow/Models/ImportDraftEntry.swift */; };
-		000000000000000320000014 /* ClassFlow/Models/Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000414 /* ClassFlow/Models/Memo.swift */; };
-		000000000000000320000015 /* ClassFlow/Models/ScheduleConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000415 /* ClassFlow/Models/ScheduleConflict.swift */; };
-		000000000000000320000016 /* ClassFlow/Models/ScheduleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000416 /* ClassFlow/Models/ScheduleDisplay.swift */; };
-		000000000000000320000017 /* ClassFlow/Models/ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000417 /* ClassFlow/Models/ScheduleEntry.swift */; };
-		000000000000000320000018 /* ClassFlow/Models/ScheduleGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000418 /* ClassFlow/Models/ScheduleGridLayout.swift */; };
-		000000000000000320000019 /* ClassFlow/Models/Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000419 /* ClassFlow/Models/Semester.swift */; };
-		000000000000000320000020 /* ClassFlow/Models/String+Normalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000420 /* ClassFlow/Models/String+Normalization.swift */; };
-		000000000000000320000021 /* ClassFlow/Models/TaskDueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000421 /* ClassFlow/Models/TaskDueText.swift */; };
-		000000000000000320000022 /* ClassFlow/Models/TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000422 /* ClassFlow/Models/TaskStatus.swift */; };
-		000000000000000320000023 /* ClassFlow/Models/TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000423 /* ClassFlow/Models/TimeOfDay.swift */; };
-		000000000000000320000024 /* ClassFlow/Models/TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000424 /* ClassFlow/Models/TimeRange.swift */; };
-		000000000000000320000025 /* ClassFlow/Models/Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000425 /* ClassFlow/Models/Timetable.swift */; };
-		000000000000000320000026 /* ClassFlow/Models/ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000426 /* ClassFlow/Models/ValidationError.swift */; };
-		000000000000000320000027 /* ClassFlow/Models/WeekPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000427 /* ClassFlow/Models/WeekPattern.swift */; };
-		000000000000000320000028 /* ClassFlow/Models/WeekRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000428 /* ClassFlow/Models/WeekRule.swift */; };
-		000000000000000320000029 /* ClassFlow/Models/WeekSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000429 /* ClassFlow/Models/WeekSelection.swift */; };
-		000000000000000320000030 /* ClassFlow/Models/Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000430 /* ClassFlow/Models/Weekday.swift */; };
-		000000000000000320000031 /* ClassFlow/Models/WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000431 /* ClassFlow/Models/WidgetSnapshot.swift */; };
-		000000000000000320000032 /* ClassFlow/Services/AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000432 /* ClassFlow/Services/AppData.swift */; };
-		000000000000000320000033 /* ClassFlow/Services/AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000433 /* ClassFlow/Services/AppDataStore.swift */; };
-		000000000000000320000034 /* ClassFlow/Services/Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000434 /* ClassFlow/Services/Inputs.swift */; };
-		000000000000000320000035 /* ClassFlow/Services/WidgetSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000435 /* ClassFlow/Services/WidgetSnapshotStore.swift */; };
-		000000000000000320000036 /* ClassFlow/Views/Widget/NextClassCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000436 /* ClassFlow/Views/Widget/NextClassCards.swift */; };
-		000000000000000320000037 /* ClassFlow/Views/Widget/TodayCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000437 /* ClassFlow/Views/Widget/TodayCards.swift */; };
-		000000000000000320000038 /* ClassFlow/Views/Widget/TodoMemoCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000438 /* ClassFlow/Views/Widget/TodoMemoCards.swift */; };
-		000000000000000320000039 /* ClassFlow/Views/Widget/WeekCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000439 /* ClassFlow/Views/Widget/WeekCard.swift */; };
-		000000000000000320000040 /* ClassFlow/Views/Widget/WidgetChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000440 /* ClassFlow/Views/Widget/WidgetChrome.swift */; };
-		000000000000000320000041 /* ClassFlow/Views/Widget/WidgetCourseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000441 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */; };
-		000000000000000320000042 /* ClassFlow/Views/Widget/WidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000442 /* ClassFlow/Views/Widget/WidgetIntents.swift */; };
-		000000000000000320000043 /* ClassFlow/Views/Widget/WidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000443 /* ClassFlow/Views/Widget/WidgetTimeline.swift */; };
+		000000000000000320000003 /* CourseLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000403 /* CourseLiveActivity.swift */; };
+		000000000000000320000004 /* CourseLiveActivityComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000404 /* CourseLiveActivityComponents.swift */; };
+		000000000000000320000005 /* CourseLiveActivityLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000405 /* CourseLiveActivityLockScreenView.swift */; };
+		000000000000000320000006 /* ClassFlow/Models/AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000406 /* ClassFlow/Models/AppPreferences.swift */; };
+		000000000000000320000007 /* ClassFlow/Models/CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000407 /* ClassFlow/Models/CalendarDate.swift */; };
+		000000000000000320000008 /* ClassFlow/Models/ClassOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000408 /* ClassFlow/Models/ClassOccurrence.swift */; };
+		000000000000000320000009 /* ClassFlow/Models/ClassPeriodTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000409 /* ClassFlow/Models/ClassPeriodTime.swift */; };
+		000000000000000320000010 /* ClassFlow/Models/ClassSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000410 /* ClassFlow/Models/ClassSession.swift */; };
+		000000000000000320000011 /* ClassFlow/Models/ClassTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000411 /* ClassFlow/Models/ClassTime.swift */; };
+		000000000000000320000012 /* ClassFlow/Models/Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000412 /* ClassFlow/Models/Course.swift */; };
+		000000000000000320000013 /* ClassFlow/Models/CourseScheduleSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000413 /* ClassFlow/Models/CourseScheduleSummary.swift */; };
+		000000000000000320000014 /* ClassFlow/Models/CourseTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000414 /* ClassFlow/Models/CourseTask.swift */; };
+		000000000000000320000015 /* ClassFlow/Models/ImportConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000415 /* ClassFlow/Models/ImportConflict.swift */; };
+		000000000000000320000016 /* ClassFlow/Models/ImportDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000416 /* ClassFlow/Models/ImportDraft.swift */; };
+		000000000000000320000017 /* ClassFlow/Models/ImportDraftEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000417 /* ClassFlow/Models/ImportDraftEntry.swift */; };
+		000000000000000320000018 /* ClassFlow/Models/Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000418 /* ClassFlow/Models/Memo.swift */; };
+		000000000000000320000019 /* ClassFlow/Models/ScheduleConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000419 /* ClassFlow/Models/ScheduleConflict.swift */; };
+		000000000000000320000020 /* ClassFlow/Models/ScheduleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000420 /* ClassFlow/Models/ScheduleDisplay.swift */; };
+		000000000000000320000021 /* ClassFlow/Models/ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000421 /* ClassFlow/Models/ScheduleEntry.swift */; };
+		000000000000000320000022 /* ClassFlow/Models/ScheduleGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000422 /* ClassFlow/Models/ScheduleGridLayout.swift */; };
+		000000000000000320000023 /* ClassFlow/Models/Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000423 /* ClassFlow/Models/Semester.swift */; };
+		000000000000000320000024 /* ClassFlow/Models/String+Normalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000424 /* ClassFlow/Models/String+Normalization.swift */; };
+		000000000000000320000025 /* ClassFlow/Models/TaskDueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000425 /* ClassFlow/Models/TaskDueText.swift */; };
+		000000000000000320000026 /* ClassFlow/Models/TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000426 /* ClassFlow/Models/TaskStatus.swift */; };
+		000000000000000320000027 /* ClassFlow/Models/TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000427 /* ClassFlow/Models/TimeOfDay.swift */; };
+		000000000000000320000028 /* ClassFlow/Models/TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000428 /* ClassFlow/Models/TimeRange.swift */; };
+		000000000000000320000029 /* ClassFlow/Models/Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000429 /* ClassFlow/Models/Timetable.swift */; };
+		000000000000000320000030 /* ClassFlow/Models/ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000430 /* ClassFlow/Models/ValidationError.swift */; };
+		000000000000000320000031 /* ClassFlow/Models/WeekPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000431 /* ClassFlow/Models/WeekPattern.swift */; };
+		000000000000000320000032 /* ClassFlow/Models/WeekRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000432 /* ClassFlow/Models/WeekRule.swift */; };
+		000000000000000320000033 /* ClassFlow/Models/WeekSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000433 /* ClassFlow/Models/WeekSelection.swift */; };
+		000000000000000320000034 /* ClassFlow/Models/Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000434 /* ClassFlow/Models/Weekday.swift */; };
+		000000000000000320000035 /* ClassFlow/Models/WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000435 /* ClassFlow/Models/WidgetSnapshot.swift */; };
+		000000000000000320000036 /* ClassFlow/Services/AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000436 /* ClassFlow/Services/AppData.swift */; };
+		000000000000000320000037 /* ClassFlow/Services/AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000437 /* ClassFlow/Services/AppDataStore.swift */; };
+		000000000000000320000038 /* ClassFlow/Services/Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000438 /* ClassFlow/Services/Inputs.swift */; };
+		000000000000000320000039 /* ClassFlow/Services/WidgetSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000439 /* ClassFlow/Services/WidgetSnapshotStore.swift */; };
+		000000000000000320000040 /* ClassFlow/Views/Widget/NextClassCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000440 /* ClassFlow/Views/Widget/NextClassCards.swift */; };
+		000000000000000320000041 /* ClassFlow/Views/Widget/TodayCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000441 /* ClassFlow/Views/Widget/TodayCards.swift */; };
+		000000000000000320000042 /* ClassFlow/Views/Widget/TodoMemoCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000442 /* ClassFlow/Views/Widget/TodoMemoCards.swift */; };
+		000000000000000320000043 /* ClassFlow/Views/Widget/WeekCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000443 /* ClassFlow/Views/Widget/WeekCard.swift */; };
+		000000000000000320000044 /* ClassFlow/Views/Widget/WidgetChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000444 /* ClassFlow/Views/Widget/WidgetChrome.swift */; };
+		000000000000000320000045 /* ClassFlow/Views/Widget/WidgetCourseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000445 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */; };
+		000000000000000320000046 /* ClassFlow/Views/Widget/WidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000446 /* ClassFlow/Views/Widget/WidgetIntents.swift */; };
+		000000000000000320000047 /* ClassFlow/Views/Widget/WidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000447 /* ClassFlow/Views/Widget/WidgetTimeline.swift */; };
+		000000000000000320000048 /* ClassFlow/LiveActivity/CourseActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000448 /* ClassFlow/LiveActivity/CourseActivityAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,47 +93,52 @@
 		000000000000000000000320 /* ClassFlowWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClassFlowWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000000000000000000401 /* ClassFlowWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlowWidgetBundle.swift; sourceTree = "<group>"; };
 		000000000000000000000402 /* ClassFlowWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlowWidgets.swift; sourceTree = "<group>"; };
-		000000000000000000000403 /* ClassFlow/Models/AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/AppPreferences.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000404 /* ClassFlow/Models/CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CalendarDate.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000405 /* ClassFlow/Models/ClassOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassOccurrence.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000406 /* ClassFlow/Models/ClassPeriodTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassPeriodTime.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000407 /* ClassFlow/Models/ClassTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassTime.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000408 /* ClassFlow/Models/Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Course.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000409 /* ClassFlow/Models/CourseScheduleSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CourseScheduleSummary.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000410 /* ClassFlow/Models/CourseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CourseTask.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000411 /* ClassFlow/Models/ImportConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportConflict.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000412 /* ClassFlow/Models/ImportDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportDraft.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000413 /* ClassFlow/Models/ImportDraftEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportDraftEntry.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000414 /* ClassFlow/Models/Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Memo.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000415 /* ClassFlow/Models/ScheduleConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleConflict.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000416 /* ClassFlow/Models/ScheduleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleDisplay.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000417 /* ClassFlow/Models/ScheduleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleEntry.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000418 /* ClassFlow/Models/ScheduleGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleGridLayout.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000419 /* ClassFlow/Models/Semester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Semester.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000420 /* ClassFlow/Models/String+Normalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassFlow/Models/String+Normalization.swift"; sourceTree = SOURCE_ROOT; };
-		000000000000000000000421 /* ClassFlow/Models/TaskDueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TaskDueText.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000422 /* ClassFlow/Models/TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TaskStatus.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000423 /* ClassFlow/Models/TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TimeOfDay.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000424 /* ClassFlow/Models/TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TimeRange.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000425 /* ClassFlow/Models/Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Timetable.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000426 /* ClassFlow/Models/ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ValidationError.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000427 /* ClassFlow/Models/WeekPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekPattern.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000428 /* ClassFlow/Models/WeekRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekRule.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000429 /* ClassFlow/Models/WeekSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekSelection.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000430 /* ClassFlow/Models/Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Weekday.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000431 /* ClassFlow/Models/WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WidgetSnapshot.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000432 /* ClassFlow/Services/AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/AppData.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000433 /* ClassFlow/Services/AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/AppDataStore.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000434 /* ClassFlow/Services/Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/Inputs.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000435 /* ClassFlow/Services/WidgetSnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/WidgetSnapshotStore.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000436 /* ClassFlow/Views/Widget/NextClassCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/NextClassCards.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000437 /* ClassFlow/Views/Widget/TodayCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/TodayCards.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000438 /* ClassFlow/Views/Widget/TodoMemoCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/TodoMemoCards.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000439 /* ClassFlow/Views/Widget/WeekCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WeekCard.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000440 /* ClassFlow/Views/Widget/WidgetChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetChrome.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000441 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetCourseColor.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000442 /* ClassFlow/Views/Widget/WidgetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetIntents.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000443 /* ClassFlow/Views/Widget/WidgetTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetTimeline.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000403 /* CourseLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseLiveActivity.swift; sourceTree = "<group>"; };
+		000000000000000000000404 /* CourseLiveActivityComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseLiveActivityComponents.swift; sourceTree = "<group>"; };
+		000000000000000000000405 /* CourseLiveActivityLockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseLiveActivityLockScreenView.swift; sourceTree = "<group>"; };
+		000000000000000000000406 /* ClassFlow/Models/AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/AppPreferences.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000407 /* ClassFlow/Models/CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CalendarDate.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000408 /* ClassFlow/Models/ClassOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassOccurrence.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000409 /* ClassFlow/Models/ClassPeriodTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassPeriodTime.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000410 /* ClassFlow/Models/ClassSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassSession.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000411 /* ClassFlow/Models/ClassTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ClassTime.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000412 /* ClassFlow/Models/Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Course.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000413 /* ClassFlow/Models/CourseScheduleSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CourseScheduleSummary.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000414 /* ClassFlow/Models/CourseTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/CourseTask.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000415 /* ClassFlow/Models/ImportConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportConflict.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000416 /* ClassFlow/Models/ImportDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportDraft.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000417 /* ClassFlow/Models/ImportDraftEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ImportDraftEntry.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000418 /* ClassFlow/Models/Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Memo.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000419 /* ClassFlow/Models/ScheduleConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleConflict.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000420 /* ClassFlow/Models/ScheduleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleDisplay.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000421 /* ClassFlow/Models/ScheduleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleEntry.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000422 /* ClassFlow/Models/ScheduleGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ScheduleGridLayout.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000423 /* ClassFlow/Models/Semester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Semester.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000424 /* ClassFlow/Models/String+Normalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassFlow/Models/String+Normalization.swift"; sourceTree = SOURCE_ROOT; };
+		000000000000000000000425 /* ClassFlow/Models/TaskDueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TaskDueText.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000426 /* ClassFlow/Models/TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TaskStatus.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000427 /* ClassFlow/Models/TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TimeOfDay.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000428 /* ClassFlow/Models/TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/TimeRange.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000429 /* ClassFlow/Models/Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Timetable.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000430 /* ClassFlow/Models/ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/ValidationError.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000431 /* ClassFlow/Models/WeekPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekPattern.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000432 /* ClassFlow/Models/WeekRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekRule.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000433 /* ClassFlow/Models/WeekSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WeekSelection.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000434 /* ClassFlow/Models/Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/Weekday.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000435 /* ClassFlow/Models/WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Models/WidgetSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000436 /* ClassFlow/Services/AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/AppData.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000437 /* ClassFlow/Services/AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/AppDataStore.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000438 /* ClassFlow/Services/Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/Inputs.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000439 /* ClassFlow/Services/WidgetSnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Services/WidgetSnapshotStore.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000440 /* ClassFlow/Views/Widget/NextClassCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/NextClassCards.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000441 /* ClassFlow/Views/Widget/TodayCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/TodayCards.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000442 /* ClassFlow/Views/Widget/TodoMemoCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/TodoMemoCards.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000443 /* ClassFlow/Views/Widget/WeekCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WeekCard.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000444 /* ClassFlow/Views/Widget/WidgetChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetChrome.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000445 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetCourseColor.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000446 /* ClassFlow/Views/Widget/WidgetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetIntents.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000447 /* ClassFlow/Views/Widget/WidgetTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/Views/Widget/WidgetTimeline.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000448 /* ClassFlow/LiveActivity/CourseActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFlow/LiveActivity/CourseActivityAttributes.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		000000000000000000000499 /* ClassFlowWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClassFlowWidget.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,47 +200,52 @@
 			children = (
 				000000000000000000000401 /* ClassFlowWidgetBundle.swift */,
 				000000000000000000000402 /* ClassFlowWidgets.swift */,
-				000000000000000000000403 /* ClassFlow/Models/AppPreferences.swift */,
-				000000000000000000000404 /* ClassFlow/Models/CalendarDate.swift */,
-				000000000000000000000405 /* ClassFlow/Models/ClassOccurrence.swift */,
-				000000000000000000000406 /* ClassFlow/Models/ClassPeriodTime.swift */,
-				000000000000000000000407 /* ClassFlow/Models/ClassTime.swift */,
-				000000000000000000000408 /* ClassFlow/Models/Course.swift */,
-				000000000000000000000409 /* ClassFlow/Models/CourseScheduleSummary.swift */,
-				000000000000000000000410 /* ClassFlow/Models/CourseTask.swift */,
-				000000000000000000000411 /* ClassFlow/Models/ImportConflict.swift */,
-				000000000000000000000412 /* ClassFlow/Models/ImportDraft.swift */,
-				000000000000000000000413 /* ClassFlow/Models/ImportDraftEntry.swift */,
-				000000000000000000000414 /* ClassFlow/Models/Memo.swift */,
-				000000000000000000000415 /* ClassFlow/Models/ScheduleConflict.swift */,
-				000000000000000000000416 /* ClassFlow/Models/ScheduleDisplay.swift */,
-				000000000000000000000417 /* ClassFlow/Models/ScheduleEntry.swift */,
-				000000000000000000000418 /* ClassFlow/Models/ScheduleGridLayout.swift */,
-				000000000000000000000419 /* ClassFlow/Models/Semester.swift */,
-				000000000000000000000420 /* ClassFlow/Models/String+Normalization.swift */,
-				000000000000000000000421 /* ClassFlow/Models/TaskDueText.swift */,
-				000000000000000000000422 /* ClassFlow/Models/TaskStatus.swift */,
-				000000000000000000000423 /* ClassFlow/Models/TimeOfDay.swift */,
-				000000000000000000000424 /* ClassFlow/Models/TimeRange.swift */,
-				000000000000000000000425 /* ClassFlow/Models/Timetable.swift */,
-				000000000000000000000426 /* ClassFlow/Models/ValidationError.swift */,
-				000000000000000000000427 /* ClassFlow/Models/WeekPattern.swift */,
-				000000000000000000000428 /* ClassFlow/Models/WeekRule.swift */,
-				000000000000000000000429 /* ClassFlow/Models/WeekSelection.swift */,
-				000000000000000000000430 /* ClassFlow/Models/Weekday.swift */,
-				000000000000000000000431 /* ClassFlow/Models/WidgetSnapshot.swift */,
-				000000000000000000000432 /* ClassFlow/Services/AppData.swift */,
-				000000000000000000000433 /* ClassFlow/Services/AppDataStore.swift */,
-				000000000000000000000434 /* ClassFlow/Services/Inputs.swift */,
-				000000000000000000000435 /* ClassFlow/Services/WidgetSnapshotStore.swift */,
-				000000000000000000000436 /* ClassFlow/Views/Widget/NextClassCards.swift */,
-				000000000000000000000437 /* ClassFlow/Views/Widget/TodayCards.swift */,
-				000000000000000000000438 /* ClassFlow/Views/Widget/TodoMemoCards.swift */,
-				000000000000000000000439 /* ClassFlow/Views/Widget/WeekCard.swift */,
-				000000000000000000000440 /* ClassFlow/Views/Widget/WidgetChrome.swift */,
-				000000000000000000000441 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */,
-				000000000000000000000442 /* ClassFlow/Views/Widget/WidgetIntents.swift */,
-				000000000000000000000443 /* ClassFlow/Views/Widget/WidgetTimeline.swift */,
+				000000000000000000000403 /* CourseLiveActivity.swift */,
+				000000000000000000000404 /* CourseLiveActivityComponents.swift */,
+				000000000000000000000405 /* CourseLiveActivityLockScreenView.swift */,
+				000000000000000000000406 /* ClassFlow/Models/AppPreferences.swift */,
+				000000000000000000000407 /* ClassFlow/Models/CalendarDate.swift */,
+				000000000000000000000408 /* ClassFlow/Models/ClassOccurrence.swift */,
+				000000000000000000000409 /* ClassFlow/Models/ClassPeriodTime.swift */,
+				000000000000000000000410 /* ClassFlow/Models/ClassSession.swift */,
+				000000000000000000000411 /* ClassFlow/Models/ClassTime.swift */,
+				000000000000000000000412 /* ClassFlow/Models/Course.swift */,
+				000000000000000000000413 /* ClassFlow/Models/CourseScheduleSummary.swift */,
+				000000000000000000000414 /* ClassFlow/Models/CourseTask.swift */,
+				000000000000000000000415 /* ClassFlow/Models/ImportConflict.swift */,
+				000000000000000000000416 /* ClassFlow/Models/ImportDraft.swift */,
+				000000000000000000000417 /* ClassFlow/Models/ImportDraftEntry.swift */,
+				000000000000000000000418 /* ClassFlow/Models/Memo.swift */,
+				000000000000000000000419 /* ClassFlow/Models/ScheduleConflict.swift */,
+				000000000000000000000420 /* ClassFlow/Models/ScheduleDisplay.swift */,
+				000000000000000000000421 /* ClassFlow/Models/ScheduleEntry.swift */,
+				000000000000000000000422 /* ClassFlow/Models/ScheduleGridLayout.swift */,
+				000000000000000000000423 /* ClassFlow/Models/Semester.swift */,
+				000000000000000000000424 /* ClassFlow/Models/String+Normalization.swift */,
+				000000000000000000000425 /* ClassFlow/Models/TaskDueText.swift */,
+				000000000000000000000426 /* ClassFlow/Models/TaskStatus.swift */,
+				000000000000000000000427 /* ClassFlow/Models/TimeOfDay.swift */,
+				000000000000000000000428 /* ClassFlow/Models/TimeRange.swift */,
+				000000000000000000000429 /* ClassFlow/Models/Timetable.swift */,
+				000000000000000000000430 /* ClassFlow/Models/ValidationError.swift */,
+				000000000000000000000431 /* ClassFlow/Models/WeekPattern.swift */,
+				000000000000000000000432 /* ClassFlow/Models/WeekRule.swift */,
+				000000000000000000000433 /* ClassFlow/Models/WeekSelection.swift */,
+				000000000000000000000434 /* ClassFlow/Models/Weekday.swift */,
+				000000000000000000000435 /* ClassFlow/Models/WidgetSnapshot.swift */,
+				000000000000000000000436 /* ClassFlow/Services/AppData.swift */,
+				000000000000000000000437 /* ClassFlow/Services/AppDataStore.swift */,
+				000000000000000000000438 /* ClassFlow/Services/Inputs.swift */,
+				000000000000000000000439 /* ClassFlow/Services/WidgetSnapshotStore.swift */,
+				000000000000000000000440 /* ClassFlow/Views/Widget/NextClassCards.swift */,
+				000000000000000000000441 /* ClassFlow/Views/Widget/TodayCards.swift */,
+				000000000000000000000442 /* ClassFlow/Views/Widget/TodoMemoCards.swift */,
+				000000000000000000000443 /* ClassFlow/Views/Widget/WeekCard.swift */,
+				000000000000000000000444 /* ClassFlow/Views/Widget/WidgetChrome.swift */,
+				000000000000000000000445 /* ClassFlow/Views/Widget/WidgetCourseColor.swift */,
+				000000000000000000000446 /* ClassFlow/Views/Widget/WidgetIntents.swift */,
+				000000000000000000000447 /* ClassFlow/Views/Widget/WidgetTimeline.swift */,
+				000000000000000000000448 /* ClassFlow/LiveActivity/CourseActivityAttributes.swift */,
 				000000000000000000000498 /* Info.plist */,
 				000000000000000000000499 /* ClassFlowWidget.entitlements */,
 			);
@@ -375,47 +390,52 @@
 			files = (
 				000000000000000320000001 /* ClassFlowWidgetBundle.swift in Sources */,
 				000000000000000320000002 /* ClassFlowWidgets.swift in Sources */,
-				000000000000000320000003 /* ClassFlow/Models/AppPreferences.swift in Sources */,
-				000000000000000320000004 /* ClassFlow/Models/CalendarDate.swift in Sources */,
-				000000000000000320000005 /* ClassFlow/Models/ClassOccurrence.swift in Sources */,
-				000000000000000320000006 /* ClassFlow/Models/ClassPeriodTime.swift in Sources */,
-				000000000000000320000007 /* ClassFlow/Models/ClassTime.swift in Sources */,
-				000000000000000320000008 /* ClassFlow/Models/Course.swift in Sources */,
-				000000000000000320000009 /* ClassFlow/Models/CourseScheduleSummary.swift in Sources */,
-				000000000000000320000010 /* ClassFlow/Models/CourseTask.swift in Sources */,
-				000000000000000320000011 /* ClassFlow/Models/ImportConflict.swift in Sources */,
-				000000000000000320000012 /* ClassFlow/Models/ImportDraft.swift in Sources */,
-				000000000000000320000013 /* ClassFlow/Models/ImportDraftEntry.swift in Sources */,
-				000000000000000320000014 /* ClassFlow/Models/Memo.swift in Sources */,
-				000000000000000320000015 /* ClassFlow/Models/ScheduleConflict.swift in Sources */,
-				000000000000000320000016 /* ClassFlow/Models/ScheduleDisplay.swift in Sources */,
-				000000000000000320000017 /* ClassFlow/Models/ScheduleEntry.swift in Sources */,
-				000000000000000320000018 /* ClassFlow/Models/ScheduleGridLayout.swift in Sources */,
-				000000000000000320000019 /* ClassFlow/Models/Semester.swift in Sources */,
-				000000000000000320000020 /* ClassFlow/Models/String+Normalization.swift in Sources */,
-				000000000000000320000021 /* ClassFlow/Models/TaskDueText.swift in Sources */,
-				000000000000000320000022 /* ClassFlow/Models/TaskStatus.swift in Sources */,
-				000000000000000320000023 /* ClassFlow/Models/TimeOfDay.swift in Sources */,
-				000000000000000320000024 /* ClassFlow/Models/TimeRange.swift in Sources */,
-				000000000000000320000025 /* ClassFlow/Models/Timetable.swift in Sources */,
-				000000000000000320000026 /* ClassFlow/Models/ValidationError.swift in Sources */,
-				000000000000000320000027 /* ClassFlow/Models/WeekPattern.swift in Sources */,
-				000000000000000320000028 /* ClassFlow/Models/WeekRule.swift in Sources */,
-				000000000000000320000029 /* ClassFlow/Models/WeekSelection.swift in Sources */,
-				000000000000000320000030 /* ClassFlow/Models/Weekday.swift in Sources */,
-				000000000000000320000031 /* ClassFlow/Models/WidgetSnapshot.swift in Sources */,
-				000000000000000320000032 /* ClassFlow/Services/AppData.swift in Sources */,
-				000000000000000320000033 /* ClassFlow/Services/AppDataStore.swift in Sources */,
-				000000000000000320000034 /* ClassFlow/Services/Inputs.swift in Sources */,
-				000000000000000320000035 /* ClassFlow/Services/WidgetSnapshotStore.swift in Sources */,
-				000000000000000320000036 /* ClassFlow/Views/Widget/NextClassCards.swift in Sources */,
-				000000000000000320000037 /* ClassFlow/Views/Widget/TodayCards.swift in Sources */,
-				000000000000000320000038 /* ClassFlow/Views/Widget/TodoMemoCards.swift in Sources */,
-				000000000000000320000039 /* ClassFlow/Views/Widget/WeekCard.swift in Sources */,
-				000000000000000320000040 /* ClassFlow/Views/Widget/WidgetChrome.swift in Sources */,
-				000000000000000320000041 /* ClassFlow/Views/Widget/WidgetCourseColor.swift in Sources */,
-				000000000000000320000042 /* ClassFlow/Views/Widget/WidgetIntents.swift in Sources */,
-				000000000000000320000043 /* ClassFlow/Views/Widget/WidgetTimeline.swift in Sources */,
+				000000000000000320000003 /* CourseLiveActivity.swift in Sources */,
+				000000000000000320000004 /* CourseLiveActivityComponents.swift in Sources */,
+				000000000000000320000005 /* CourseLiveActivityLockScreenView.swift in Sources */,
+				000000000000000320000006 /* ClassFlow/Models/AppPreferences.swift in Sources */,
+				000000000000000320000007 /* ClassFlow/Models/CalendarDate.swift in Sources */,
+				000000000000000320000008 /* ClassFlow/Models/ClassOccurrence.swift in Sources */,
+				000000000000000320000009 /* ClassFlow/Models/ClassPeriodTime.swift in Sources */,
+				000000000000000320000010 /* ClassFlow/Models/ClassSession.swift in Sources */,
+				000000000000000320000011 /* ClassFlow/Models/ClassTime.swift in Sources */,
+				000000000000000320000012 /* ClassFlow/Models/Course.swift in Sources */,
+				000000000000000320000013 /* ClassFlow/Models/CourseScheduleSummary.swift in Sources */,
+				000000000000000320000014 /* ClassFlow/Models/CourseTask.swift in Sources */,
+				000000000000000320000015 /* ClassFlow/Models/ImportConflict.swift in Sources */,
+				000000000000000320000016 /* ClassFlow/Models/ImportDraft.swift in Sources */,
+				000000000000000320000017 /* ClassFlow/Models/ImportDraftEntry.swift in Sources */,
+				000000000000000320000018 /* ClassFlow/Models/Memo.swift in Sources */,
+				000000000000000320000019 /* ClassFlow/Models/ScheduleConflict.swift in Sources */,
+				000000000000000320000020 /* ClassFlow/Models/ScheduleDisplay.swift in Sources */,
+				000000000000000320000021 /* ClassFlow/Models/ScheduleEntry.swift in Sources */,
+				000000000000000320000022 /* ClassFlow/Models/ScheduleGridLayout.swift in Sources */,
+				000000000000000320000023 /* ClassFlow/Models/Semester.swift in Sources */,
+				000000000000000320000024 /* ClassFlow/Models/String+Normalization.swift in Sources */,
+				000000000000000320000025 /* ClassFlow/Models/TaskDueText.swift in Sources */,
+				000000000000000320000026 /* ClassFlow/Models/TaskStatus.swift in Sources */,
+				000000000000000320000027 /* ClassFlow/Models/TimeOfDay.swift in Sources */,
+				000000000000000320000028 /* ClassFlow/Models/TimeRange.swift in Sources */,
+				000000000000000320000029 /* ClassFlow/Models/Timetable.swift in Sources */,
+				000000000000000320000030 /* ClassFlow/Models/ValidationError.swift in Sources */,
+				000000000000000320000031 /* ClassFlow/Models/WeekPattern.swift in Sources */,
+				000000000000000320000032 /* ClassFlow/Models/WeekRule.swift in Sources */,
+				000000000000000320000033 /* ClassFlow/Models/WeekSelection.swift in Sources */,
+				000000000000000320000034 /* ClassFlow/Models/Weekday.swift in Sources */,
+				000000000000000320000035 /* ClassFlow/Models/WidgetSnapshot.swift in Sources */,
+				000000000000000320000036 /* ClassFlow/Services/AppData.swift in Sources */,
+				000000000000000320000037 /* ClassFlow/Services/AppDataStore.swift in Sources */,
+				000000000000000320000038 /* ClassFlow/Services/Inputs.swift in Sources */,
+				000000000000000320000039 /* ClassFlow/Services/WidgetSnapshotStore.swift in Sources */,
+				000000000000000320000040 /* ClassFlow/Views/Widget/NextClassCards.swift in Sources */,
+				000000000000000320000041 /* ClassFlow/Views/Widget/TodayCards.swift in Sources */,
+				000000000000000320000042 /* ClassFlow/Views/Widget/TodoMemoCards.swift in Sources */,
+				000000000000000320000043 /* ClassFlow/Views/Widget/WeekCard.swift in Sources */,
+				000000000000000320000044 /* ClassFlow/Views/Widget/WidgetChrome.swift in Sources */,
+				000000000000000320000045 /* ClassFlow/Views/Widget/WidgetCourseColor.swift in Sources */,
+				000000000000000320000046 /* ClassFlow/Views/Widget/WidgetIntents.swift in Sources */,
+				000000000000000320000047 /* ClassFlow/Views/Widget/WidgetTimeline.swift in Sources */,
+				000000000000000320000048 /* ClassFlow/LiveActivity/CourseActivityAttributes.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */

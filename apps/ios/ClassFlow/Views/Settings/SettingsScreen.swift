@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingsScreen: View {
 
     @Environment(AppStore.self) private var store
+    @Environment(CourseLiveActivityController.self) private var liveActivity: CourseLiveActivityController?
 
     @State private var showsNewSemester = false
     @State private var errorMessage: String?
@@ -14,6 +15,7 @@ struct SettingsScreen: View {
             courseSection
             importSection
             preferencesSection
+            liveActivitySection
             periodSection
             aboutSection
         }
@@ -138,6 +140,27 @@ extension SettingsScreen {
                 }
             }
         )
+    }
+}
+
+// MARK: - 实时活动
+
+extension SettingsScreen {
+
+    @ViewBuilder
+    private var liveActivitySection: some View {
+        Section {
+            Toggle("自动显示当前课程", isOn: preference(\.autoStartLiveActivity))
+
+            if liveActivity?.areActivitiesEnabled == false {
+                LabeledContent("系统实时活动", value: "已关闭")
+                    .foregroundStyle(.secondary)
+            }
+        } header: {
+            Text("实时活动")
+        } footer: {
+            Text("开启后，上课时自动在灵动岛和锁屏显示当前课程，下课后自动结束；下一节课开始时再自动切换。\n\niOS 只允许 App 在前台（或刚回到前台）时启动实时活动。App 被系统挂起后不会准点自动开始，回到 App 时会按当前课程立即校正；要做到完全准点需要推送通知。\n\n如果系统设置里关闭了 ClassFlow 的「实时活动」，这里不会生效。App 内没有手动开启的入口，活动只在打开本项时自动出现。")
+        }
     }
 }
 

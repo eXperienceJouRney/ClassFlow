@@ -102,7 +102,7 @@ struct ScheduleScreen: View {
 
                 Divider()
 
-                body(for: timetable, semester: semester)
+                scheduleBody(for: timetable, semester: semester)
             }
             .background(Color(uiColor: .systemGroupedBackground))
             .onAppear {
@@ -122,7 +122,7 @@ struct ScheduleScreen: View {
     }
 
     @ViewBuilder
-    private func body(for timetable: Timetable, semester: Semester) -> some View {
+    private func scheduleBody(for timetable: Timetable, semester: Semester) -> some View {
         let onSwipePage: (Int) -> Void = { delta in
             step(delta, semester: semester, timetable: timetable)
         }
@@ -296,14 +296,17 @@ extension ScheduleScreen {
 #Preview("课程表 · 有课") {
     ScheduleScreen()
         .environment(PreviewSupport.store)
+        .environment(AppRouter())
 }
 
 #Preview("课程表 · 学期里还没有课") {
     ScheduleScreen()
         .environment(PreviewSupport.emptyStore)
+        .environment(AppRouter())
 }
 
 #Preview("课程表 · 还没有学期") {
     ScheduleScreen()
         .environment(PreviewSupport.blankStore)
+        .environment(AppRouter())
 }

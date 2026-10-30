@@ -91,6 +91,25 @@ extension AppData {
             }
         }
 
+        for index in copy.importDrafts.indices {
+            var draft = copy.importDrafts[index]
+            guard draft.sourceKind == .image,
+                  [.notStarted, .readyToCommit, .failed].contains(draft.status),
+                  let semester = copy.semester(id: draft.semesterId) else { continue }
+            var changed = false
+            for entryIndex in draft.entries.indices {
+                if draft.entries[entryIndex].applyLegacyDisplayedWeekDefault() {
+                    draft.entries[entryIndex].revalidate(weekCount: semester.weekCount())
+                    changed = true
+                }
+            }
+            if changed {
+                let selected = draft.selectedEntries
+                draft.status = !selected.isEmpty && selected.allSatisfy { $0.status == .ready } ? .readyToCommit : .notStarted
+                copy.importDrafts[index] = draft
+            }
+        }
+
         copy.schemaVersion = AppData.currentSchemaVersion
         return copy
     }

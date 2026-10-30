@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "classes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "displayedWeek": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 100
+    },
+    "courses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "teacher": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 300
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 300
+          },
+          "weekday": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 7
+          },
+          "startPeriod": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 30
+          },
+          "endPeriod": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 30
+          },
+          "startTime": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5
+          },
+          "endTime": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 5
+          },
+          "weeks": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                },
+                "maxItems": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isCurrentWeek": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "personal",
+              "allClasses",
+              "classes",
+              "unresolved"
+            ]
+          },
+          "classIDs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "maxItems": 100
+          },
+          "classGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 300
+          },
+          "requiresReview": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 20
+          },
+          "sourceText": {
+            "type": "string",
+            "maxLength": 6000
+          }
+        },
+        "required": [
+          "name",
+          "teacher",
+          "location",
+          "weekday",
+          "startPeriod",
+          "endPeriod",
+          "startTime",
+          "endTime",
+          "weeks",
+          "isCurrentWeek",
+          "scope",
+          "classIDs",
+          "classGroup",
+          "requiresReview",
+          "notes",
+          "sourceText"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 512
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 1000
+      },
+      "maxItems": 20
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "classes",
+    "displayedWeek",
+    "courses",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

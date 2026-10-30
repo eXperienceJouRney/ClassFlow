@@ -9,6 +9,11 @@
 __pycache__/
 *.pyc
 
+# 本机 AI 服务密钥与配置
+.env
+.env.*
+/services/image-import/var/
+
 # 本地归档：历史 bundle、废弃分支快照，不入库
 .archive/
 

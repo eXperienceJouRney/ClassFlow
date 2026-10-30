@@ -92,10 +92,11 @@ enum ImportIssueCode: String, Codable, CaseIterable, Hashable, Sendable {
     case invalidTimeOrder = "IMPORT_INVALID_TIME_ORDER"
     case invalidWeekRule = "IMPORT_INVALID_WEEK_RULE"
     case weekOutOfSemesterRange = "IMPORT_WEEK_OUT_OF_SEMESTER_RANGE"
+    case imageWeeksUnconfirmed = "IMPORT_IMAGE_WEEKS_UNCONFIRMED"
 
     var isMissingInformation: Bool {
         switch self {
-        case .missingWeekday, .missingTime:
+        case .missingWeekday, .missingTime, .imageWeeksUnconfirmed:
             true
         case .blankCourseName, .incompletePeriod, .incompleteTime,
              .invalidPeriodOrder, .invalidTimeOrder,
@@ -110,6 +111,46 @@ enum ImportTimeAuthority: String, Codable, Hashable, Sendable {
 
     case period
     case custom
+}
+
+/// 图片识别的核对提示；可选字段保证旧草稿无需迁移即可读取。
+struct ImportImageReview: Hashable, Codable, Sendable {
+    var notes: [String]
+    var requiresWeekConfirmation: Bool
+    var selectedClassName: String? = nil
+    var classGroup: String? = nil
+    var requiresClassReview: Bool? = nil
+
+    static let classReviewMessage = "部分课程无法对应到班级，默认不导入，请核对原图后按需勾选、修改。"
+}
+
+extension ImportDraftEntry {
+    /// 兼容旧版图片草稿：当时已识别的表头周数只保存在固定格式的核对提示中。
+    /// 仅迁移尚未填写周规则的普通课程，保留用户设置与非本周记录。
+    @discardableResult
+    mutating func applyLegacyDisplayedWeekDefault() -> Bool {
+        guard status != .committed, weekRule == WeekRule(),
+              let review = imageReview, review.requiresWeekConfirmation,
+              rawPayload?.contains("非本周") != true,
+              let regex = try? NSRegularExpression(pattern: #"^截图显示第([0-9]{1,2})周，完整上课周次未知，请在修改记录中选择并确认。$"#) else { return false }
+        let weeks = review.notes.compactMap { note -> Int? in
+            guard let match = regex.firstMatch(in: note, range: NSRange(note.startIndex..., in: note)),
+                  let range = Range(match.range(at: 1), in: note) else { return nil }
+            return Int(note[range])
+        }
+        guard Set(weeks).count == 1, let week = weeks.first, week >= 1 else { return false }
+        weekRule = WeekRule(startWeek: week, endWeek: week)
+        imageReview?.requiresWeekConfirmation = false
+        imageReview?.notes = review.notes.map { note in
+            regex.firstMatch(in: note, range: NSRange(note.startIndex..., in: note)) != nil
+                ? "已按图片默认选择第\(week)周，仅导入这一周；需要时可修改周次。" : note
+        }
+        if errorCode == ImportIssueCode.imageWeeksUnconfirmed.rawValue {
+            errorCode = nil
+            errorMessage = nil
+        }
+        return true
+    }
 }
 
 /// 导入流程中的单条候选记录，不是正式课程实体。
@@ -140,6 +181,7 @@ struct ImportDraftEntry: Identifiable, Hashable, Codable, Sendable {
     var createdCourseId: UUID?
     var errorCode: String?
     var errorMessage: String?
+    var imageReview: ImportImageReview?
 
     init(
         id: UUID = UUID(),
@@ -166,7 +208,8 @@ struct ImportDraftEntry: Identifiable, Hashable, Codable, Sendable {
         matchedCourseId: UUID? = nil,
         createdCourseId: UUID? = nil,
         errorCode: String? = nil,
-        errorMessage: String? = nil
+        errorMessage: String? = nil,
+        imageReview: ImportImageReview? = nil
     ) {
         self.id = id
         self.draftId = draftId
@@ -193,6 +236,7 @@ struct ImportDraftEntry: Identifiable, Hashable, Codable, Sendable {
         self.createdCourseId = createdCourseId
         self.errorCode = errorCode
         self.errorMessage = errorMessage
+        self.imageReview = imageReview
     }
 }
 
@@ -414,6 +458,14 @@ extension ImportDraftEntry {
                 field: "周次",
                 message: error.message
             )
+        }
+
+        if imageReview?.requiresWeekConfirmation == true {
+            problems.append(ValidationIssue(
+                code: ImportIssueCode.imageWeeksUnconfirmed.rawValue,
+                field: "周次",
+                message: "截图未显示完整上课周次，请修改记录并确认周次后再提交"
+            ))
         }
 
         guard semesterWeekCount >= 1, problems.isEmpty else { return problems }

@@ -22,11 +22,11 @@ enum ImportSourceKind: String, Codable, CaseIterable, Hashable, Sendable {
         case .manualEntry: "一条一条填写课程安排"
         case .pastedText: "粘贴一段课表文本，由应用解析成候选记录"
         case .file: "选择 txt / csv / md 文本课表文件"
-        case .image: "选择课表截图（识别能力尚未接入，见 OPEN-02）"
+        case .image: "从相册或文件选择课表，默认使用 OCR，也可选择 AI 识别"
         }
     }
 
-    /// 首版不提供自动识别。
+    /// 图片来源需要先运行所选的图片识别器。
     var requiresRecognizer: Bool { self == .image }
 }
 
@@ -96,7 +96,72 @@ struct ImportDraft: Identifiable, Hashable, Codable, Sendable {
     }
 }
 
+/// 预览中的一门课程及其多条安排；仅为展示分组，不改变草稿记录或周次规则。
+struct ImportDraftCourseGroup: Identifiable, Sendable {
+    let id: UUID
+    let courseName: String
+    var entries: [ImportDraftEntry]
+
+    var displayName: String { courseName.isEmpty ? "待填写课程名" : courseName }
+
+    var classResolvedEntries: [ImportDraftEntry] {
+        entries.filter { $0.imageReview?.requiresClassReview != true }
+    }
+
+    /// 课堂编号只在本课程内关联，不能跨课程把同号课堂视为同一组学生。
+    var unresolvedClassGroups: [ImportDraftClassGroup] {
+        var groups: [ImportDraftClassGroup] = []
+        var indexes: [String: Int] = [:]
+        for entry in entries where entry.imageReview?.requiresClassReview == true {
+            let label = entry.imageReview?.classGroup?.normalizedOrNil
+            let name = label == "课堂分组" ? nil : label
+            if let name, let index = indexes[name] {
+                groups[index].entries.append(entry)
+            } else {
+                if let name { indexes[name] = groups.count }
+                groups.append(ImportDraftClassGroup(id: entry.id, name: name, entries: [entry]))
+            }
+        }
+        // 课堂1、2、…、10按编号排序；缺少课堂信息的记录各自保留，不补猜所属课堂。
+        return groups.sorted {
+            if $0.name == nil, $1.name != nil { return false }
+            if $0.name != nil, $1.name == nil { return true }
+            let order = $0.displayName.localizedStandardCompare($1.displayName)
+            return order == .orderedAscending || (order == .orderedSame
+                && ($0.entries.first?.sourceIndex ?? 0) < ($1.entries.first?.sourceIndex ?? 0))
+        }
+    }
+}
+
+struct ImportDraftClassGroup: Identifiable, Sendable {
+    let id: UUID
+    let name: String?
+    var entries: [ImportDraftEntry]
+
+    var displayName: String { name ?? "课堂待核对" }
+    var selectedCount: Int { entries.filter(\.isSelected).count }
+    var isFullySelected: Bool { !entries.isEmpty && selectedCount == entries.count }
+    var isPartiallySelected: Bool { selectedCount > 0 && !isFullySelected }
+}
+
 extension ImportDraft {
+
+    /// 与提交时一致：仅按去除首尾空白的课程名分组，保留首次出现顺序。
+    /// 尚未命名的记录分别展示，不能把多条未知课程默认视为同一门课。
+    var courseGroups: [ImportDraftCourseGroup] {
+        var groups: [ImportDraftCourseGroup] = []
+        var indexes: [String: Int] = [:]
+        for entry in entries {
+            let name = entry.courseName.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !name.isEmpty, let index = indexes[name] {
+                groups[index].entries.append(entry)
+            } else {
+                if !name.isEmpty { indexes[name] = groups.count }
+                groups.append(ImportDraftCourseGroup(id: entry.id, courseName: name, entries: [entry]))
+            }
+        }
+        return groups
+    }
 
     var selectedEntries: [ImportDraftEntry] {
         entries.filter(\.isSelected)
@@ -148,7 +213,7 @@ extension ImportDraft {
     }
 
     var summaryText: String {
-        var parts: [String] = ["共 \(entries.count) 条"]
+        var parts: [String] = ["共 \(courseGroups.count) 门课程", "\(entries.count) 条安排"]
         if selectedCount > 0 { parts.append("已选 \(selectedCount) 条") }
         if readyCount > 0 { parts.append("可提交 \(readyCount) 条") }
         if needsCorrectionCount > 0 { parts.append("待修正 \(needsCorrectionCount) 条") }

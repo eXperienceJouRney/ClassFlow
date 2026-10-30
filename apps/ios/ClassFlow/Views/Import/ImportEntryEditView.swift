@@ -21,6 +21,7 @@ struct ImportEntryEditView: View {
     @State private var endTime: Date
     /// 实际上课周次：勾选的周排课，未勾选的周不排课。
     @State private var selectedWeeks: Set<Int>
+    @State private var confirmsImageWeeks: Bool
 
     init(
         semester: Semester,
@@ -48,7 +49,9 @@ struct ImportEntryEditView: View {
         _endTime = State(
             initialValue: (entry.endTime ?? TimeOfDay(hour: 9, minute: 40)!).dateValue()
         )
-        _selectedWeeks = State(initialValue: rule.selectedWeeks(upTo: total))
+        _selectedWeeks = State(initialValue: entry.imageReview?.requiresWeekConfirmation == true
+            ? [] : rule.selectedWeeks(upTo: total))
+        _confirmsImageWeeks = State(initialValue: entry.imageReview?.requiresWeekConfirmation != true)
     }
 
     var body: some View {
@@ -71,6 +74,12 @@ struct ImportEntryEditView: View {
 
                 timeSection
                 weekSection
+
+                if let review = entry.imageReview, !review.notes.isEmpty {
+                    Section("原图核对提示") {
+                        ForEach(review.notes, id: \.self) { Text($0).font(.callout) }
+                    }
+                }
 
                 if !entry.issues.isEmpty {
                     Section("当前校验问题") {
@@ -98,6 +107,7 @@ struct ImportEntryEditView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("完成") { save() }
+                        .disabled(!confirmsImageWeeks || (entry.imageReview?.requiresWeekConfirmation == true && selectedWeeks.isEmpty))
                 }
             }
         }
@@ -135,7 +145,7 @@ extension ImportEntryEditView {
             Text("上课时间")
         } footer: {
             if usesPeriod && entry.customPair != nil && keepsCandidateTimes {
-                Text("提交时以课节为权威来源；钟点不会写入课程安排，只会作为学期作息的候选值供你确认。")
+                Text("提交时以课节为准；钟点不会写入课程安排，只作为待确认的学期作息候选值。")
             } else if usesPeriod {
                 Text("按课节的安排会根据学期作息换算实际钟点，作息表改了它也跟着变。")
             } else {
@@ -149,6 +159,10 @@ extension ImportEntryEditView {
     private var weekSection: some View {
         Section {
             WeekSelectionEditor(weekCount: semester.weekCount(), selection: $selectedWeeks)
+            if entry.imageReview?.requiresWeekConfirmation == true {
+                Toggle("已核对本课程的上课周次", isOn: $confirmsImageWeeks)
+                    .disabled(selectedWeeks.isEmpty)
+            }
         } header: {
             Text("上课周次")
         } footer: {
@@ -172,7 +186,8 @@ extension ImportEntryEditView {
             endTime: (!usesPeriod || (entry.customPair != nil && keepsCandidateTimes))
                 ? TimeOfDay.from(endTime)
                 : nil,
-            weekRule: rule
+            weekRule: rule,
+            confirmsImageWeeks: confirmsImageWeeks
         )
 
         onSave(edit)

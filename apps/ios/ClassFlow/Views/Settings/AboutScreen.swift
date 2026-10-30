@@ -33,20 +33,27 @@ struct AboutScreen: View {
     }
 }
 
-/// 隐私说明页：数据存放位置与不联网约定。
+/// 隐私说明页：数据存放位置与可选 AI 图片识别。
 struct PrivacyScreen: View {
 
     var body: some View {
         List {
             Section {
-                Text("ClassFlow 不收集、不上传任何个人数据。")
+                Text("课表数据保存在设备本地；仅在使用 AI 图片识别时发送所选图片。")
                     .font(DesignTokens.Typography.rowTitle)
             }
 
             Section("数据放在哪里") {
                 Label("学期、课程、安排、待办、笔记全部保存在设备本地", systemImage: "iphone")
-                Label("不接入账号体系，不需要联网", systemImage: "wifi.slash")
-                Label("删除 App 会一并删除全部数据", systemImage: "trash")
+                Label("日常管理和本地图片识别可以离线使用", systemImage: "wifi.slash")
+                Label("删除 App 会一并删除本机课表文件", systemImage: "trash")
+            }
+
+            Section("AI 图片识别") {
+                Text("图片导入默认使用本地 OCR。开启「使用 AI 识别」后，直接将所选图片发送给已配置的个人 API 识别，不经过本地 OCR；关闭时只用本地 OCR，不上传图片。图片不写入课表文件，所有结果经核对并确认后才加入课表。")
+                Text("使用 AI 时，图片和个人 API Key 直接发送至所配置的服务，费用由对应 API 账户承担，数据处理遵循该服务商的政策。未配置 Key 时仍可使用本地识别。")
+                Text("个人 API Key 保存在系统钥匙串中，可在 AI 识别配置中清空并保存以移除。")
+                    .foregroundStyle(.secondary)
             }
 
             Section {

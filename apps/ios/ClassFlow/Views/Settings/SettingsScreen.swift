@@ -83,6 +83,7 @@ extension SettingsScreen {
             } label: {
                 Text("导入课表")
             }
+            NavigationLink("AI 识别配置") { AIImageImportSettingsView() }
         }
     }
 }

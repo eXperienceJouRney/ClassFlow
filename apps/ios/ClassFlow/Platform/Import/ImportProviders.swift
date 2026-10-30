@@ -74,18 +74,13 @@ struct TextFileImportReader: Sendable {
 }
 
 /// 图片识别适配器接口。
-/// 识别结果为候选数据；未经确认不得上传图片到远程服务。
-protocol TimetableImageRecognizer: Sendable {
+/// 识别结果为候选数据；联网实现必须在发起前向用户明确说明图片发送目的地。
+nonisolated protocol TimetableImageRecognizer: Sendable {
 
     func recognize(imageData: Data, fileName: String) async throws -> [ImportDraftEntry]
 }
 
-/// 识别能力接入前的占位实现：始终返回不可用错误，不伪造识别结果。
-struct UnavailableTimetableImageRecognizer: TimetableImageRecognizer {
-
-    func recognize(imageData: Data, fileName: String) async throws -> [ImportDraftEntry] {
-        throw AppError.dependencyUnavailable(
-            reason: "图片识别实现尚未接入（见设计文档 OPEN-02）。请改用手动录入或文本文件导入。"
-        )
-    }
+nonisolated protocol TimetableClassImageRecognizer: TimetableImageRecognizer {
+    func classOptions(imageData: Data) async throws -> [TimetableImageClassOption]
+    func recognize(imageData: Data, fileName: String, selectedClassID: String?) async throws -> [ImportDraftEntry]
 }

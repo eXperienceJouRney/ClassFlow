@@ -4,21 +4,29 @@ import SwiftUI
 struct ImportEntryRow: View {
 
     let entry: ImportDraftEntry
+    var showsCourseName = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 6) {
-                Text(entry.displayName)
+                Text(showsCourseName ? entry.displayName : "\(entry.weekday?.shortName ?? "未指定星期") · \(entry.timeDescription)")
                     .font(.body)
                     .foregroundStyle(.primary)
 
                 statusChip
             }
 
-            HStack(spacing: 10) {
-                Label(entry.weekday?.shortName ?? "未指定星期", systemImage: "calendar")
-                Label(entry.timeDescription, systemImage: "clock")
+            if showsCourseName {
+                HStack(spacing: 10) {
+                    Label(entry.weekday?.shortName ?? "未指定星期", systemImage: "calendar")
+                    Label(entry.timeDescription, systemImage: "clock")
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
             }
+
+            Label(entry.imageReview?.requiresWeekConfirmation == true ? "周次待核对" : entry.weekRule.displayName,
+                systemImage: "repeat")
             .font(.caption)
             .foregroundStyle(.secondary)
 
@@ -35,6 +43,12 @@ struct ImportEntryRow: View {
                 .foregroundStyle(.tertiary)
             }
 
+            if let note = entry.imageReview?.notes.first {
+                Text(note)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+
             if let issue = entry.issues.first {
                 Label(issue.message, systemImage: "exclamationmark.circle")
                     .font(.caption2)
@@ -46,7 +60,7 @@ struct ImportEntryRow: View {
     }
 
     private var statusChip: some View {
-        Text(entry.status.displayName)
+        Text(entry.imageReview?.requiresClassReview == true ? "待核对" : entry.status.displayName)
             .font(.caption2.weight(.medium))
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
@@ -55,7 +69,8 @@ struct ImportEntryRow: View {
     }
 
     private var statusColor: Color {
-        switch entry.status {
+        if entry.imageReview?.requiresClassReview == true { return .orange }
+        return switch entry.status {
         case .ready: .green
         case .needsCorrection: .orange
         case .invalid: .red

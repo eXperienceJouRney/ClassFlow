@@ -64,6 +64,42 @@ extension AppStore {
         )
         return try parseImportSource(draftId: draft.id, text: text)
     }
+
+    /// 识别完成后一次性保存候选草稿；取消、失败或目标学期已删除时不留下空草稿。
+    /// 此操作不创建课程或安排，正式写入仍需用户在草稿页确认提交。
+    @discardableResult
+    func createImportDraft(
+        fromImageData imageData: Data,
+        fileName: String,
+        semesterId: UUID,
+        recognizer: (any TimetableImageRecognizer)? = nil
+    ) async throws -> ImportDraft {
+        guard data.semester(id: semesterId) != nil else {
+            throw AppError.notFound(entity: "学期")
+        }
+        let recognizer = recognizer ?? VisionTimetableImageRecognizer()
+        let recognized = try await recognizer.recognize(imageData: imageData, fileName: fileName)
+        try Task.checkCancellation()
+        guard let semester = data.semester(id: semesterId) else {
+            throw AppError.notFound(entity: "学期")
+        }
+        guard !recognized.isEmpty else {
+            throw AppError.importParseFailed(reason: "没有识别到课程，请换一张清晰的完整课表截图")
+        }
+        var draft = ImportDraft(semesterId: semesterId, sourceKind: .image, sourceName: fileName)
+        draft.entries = recognized.enumerated().map { index, value in
+            var entry = value
+            entry.draftId = draft.id
+            entry.sourceIndex = index
+            entry.markParsed()
+            entry.revalidate(weekCount: semester.weekCount())
+            return entry
+        }
+        draft.status = Self.derivedDraftStatus(entries: draft.entries, current: .notStarted)
+        let completed = draft
+        try commit { $0.importDrafts.append(completed) }
+        return completed
+    }
 }
 
 // MARK: - API-IMP-02 解析输入
@@ -177,6 +213,9 @@ extension AppStore {
             entry.startTime = edit.startTime
             entry.endTime = edit.endTime
             entry.weekRule = edit.weekRule.normalized()
+            if edit.confirmsImageWeeks {
+                entry.imageReview?.requiresWeekConfirmation = false
+            }
             entry.errorCode = nil
             entry.errorMessage = nil
             entry.revalidate(weekCount: semester.weekCount())
@@ -239,6 +278,22 @@ extension AppStore {
             guard var entry = draft.entry(id: entryId) else { return }
             entry.applySelection(isSelected, weekCount: semester.weekCount())
             draft.replace(entry)
+        }
+    }
+
+    @discardableResult
+    func setImportSelection(draftId: UUID, entryIds: Set<UUID>, isSelected: Bool) throws -> ImportDraft {
+        guard let draft = data.importDraft(id: draftId),
+              let semester = data.semester(id: draft.semesterId) else {
+            throw AppError.notFound(entity: "导入草稿或学期")
+        }
+        guard entryIds.isSubset(of: Set(draft.entries.map(\.id))) else {
+            throw AppError.notFound(entity: "导入记录")
+        }
+        return try mutateDraft(id: draftId) { draft in
+            for index in draft.entries.indices where entryIds.contains(draft.entries[index].id) {
+                draft.entries[index].applySelection(isSelected, weekCount: semester.weekCount())
+            }
         }
     }
 
@@ -701,8 +756,10 @@ extension AppStore {
         if current == .succeeded || current == .committing || current == .cancelled { return current }
         if entries.isEmpty { return .notStarted }
 
-        let hasCommittable = entries.contains { $0.isSelected && $0.status == .ready }
-        return hasCommittable ? .readyToCommit : .failed
+        let selected = entries.filter(\.isSelected)
+        // 尚未补全的草稿不是提交失败，且原子提交要求全部选中记录均已就绪。
+        let allReady = !selected.isEmpty && selected.allSatisfy { $0.status == .ready }
+        return allReady ? .readyToCommit : .notStarted
     }
 
     private static func commitResult(for draft: ImportDraft) -> ImportCommitResult {

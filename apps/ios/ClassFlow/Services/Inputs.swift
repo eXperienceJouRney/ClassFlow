@@ -57,6 +57,7 @@ struct ImportEntryEdit: Hashable, Sendable {
     var startTime: TimeOfDay?
     var endTime: TimeOfDay?
     var weekRule: WeekRule
+    var confirmsImageWeeks: Bool
 
     init(
         courseName: String,
@@ -67,7 +68,8 @@ struct ImportEntryEdit: Hashable, Sendable {
         endPeriod: Int? = nil,
         startTime: TimeOfDay? = nil,
         endTime: TimeOfDay? = nil,
-        weekRule: WeekRule = WeekRule()
+        weekRule: WeekRule = WeekRule(),
+        confirmsImageWeeks: Bool = false
     ) {
         self.courseName = courseName
         self.teacher = teacher
@@ -78,6 +80,7 @@ struct ImportEntryEdit: Hashable, Sendable {
         self.startTime = startTime
         self.endTime = endTime
         self.weekRule = weekRule
+        self.confirmsImageWeeks = confirmsImageWeeks
     }
 
     init(entry: ImportDraftEntry) {

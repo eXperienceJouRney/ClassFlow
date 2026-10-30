@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import UniformTypeIdentifiers
 
 /// 课表导入流程；识别结果只形成草稿，用户确认提交前不写入正式课程数据。
@@ -11,8 +12,13 @@ struct ImportScreen: View {
     @State private var pastedText = ""
     @State private var showsTextSheet = false
     @State private var showsFileImporter = false
-    @State private var showsImageNotice = false
+    @State private var showsImageImport = false
+    @State private var imagePreview: UIImage?
+    @State private var imagePreviewDraftId: UUID?
+    @State private var showsImagePreview = false
     @State private var editingEntry: ImportDraftEntry?
+    @State private var collapsedCourseIDs: Set<UUID> = []
+    @State private var expandedClassIDs: Set<UUID> = []
     @State private var conflicts: [ImportConflict] = []
     @State private var conflictStrategy: ImportConflictStrategy = .keepAll
     @State private var commitResult: ImportCommitResult?
@@ -36,7 +42,7 @@ struct ImportScreen: View {
 
     /// 尚未提交完成的草稿，供用户继续处理。
     private var resumableDrafts: [ImportDraft] {
-        store.importDrafts.filter { !$0.status.isFinished }
+        store.importDrafts.filter { !$0.status.isFinished || $0.status == .failed }
     }
 
     var body: some View {
@@ -64,6 +70,31 @@ struct ImportScreen: View {
             }
         }
         .sheet(isPresented: $showsTextSheet) { textSheet }
+        .sheet(isPresented: $showsImageImport) {
+            if let semesterId = selectedSemesterId {
+                TimetableImageImportView(semesterId: semesterId) { draft, preview in
+                    imagePreview = preview
+                    imagePreviewDraftId = draft.id
+                    resume(draft)
+                }
+            }
+        }
+        .sheet(isPresented: $showsImagePreview) {
+            NavigationStack {
+                Group {
+                    if let imagePreview {
+                        TimetableImagePreview(image: imagePreview)
+                    }
+                }
+                .navigationTitle("核对原图")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("完成") { showsImagePreview = false }
+                    }
+                }
+            }
+        }
         .sheet(item: $editingEntry) { entry in
             if let semester {
                 ImportEntryEditView(semester: semester, entry: entry) { edit in
@@ -77,6 +108,8 @@ struct ImportScreen: View {
                     showsResult = false
                     if commitResult.succeeded {
                         draftId = nil
+                        imagePreview = nil
+                        imagePreviewDraftId = nil
                         conflicts = []
                     }
                 }
@@ -88,12 +121,6 @@ struct ImportScreen: View {
             allowsMultipleSelection: false
         ) { result in
             handleFileSelection(result)
-        }
-        .alert("图片识别尚未接入", isPresented: $showsImageNotice) {
-            Button("改用手动录入") { startNewDraft(kind: .manualEntry, addFirstEntry: true) }
-            Button("好", role: .cancel) {}
-        } message: {
-            Text("课表图片的本地识别实现尚未锁定（设计文档 OPEN-02）。你可以先用手动录入或文本文件导入，识别能力接入后这个入口会直接可用。")
         }
         .errorAlert($errorMessage)
     }
@@ -184,59 +211,155 @@ extension ImportScreen {
             LabeledContent("学期", value: store.data.semester(id: draft.semesterId)?.name ?? "未知学期")
             LabeledContent("来源", value: draft.sourceName ?? draft.sourceKind.displayName)
             LabeledContent("状态", value: draft.status.displayName)
+            if let className = draft.entries.compactMap({ $0.imageReview?.selectedClassName }).first {
+                LabeledContent("所选班级", value: className)
+            }
+            if draft.sourceKind == .image, imagePreview != nil {
+                Button("核对原图", systemImage: "photo") { showsImagePreview = true }
+            }
+            if draft.entries.contains(where: { $0.imageReview?.requiresClassReview == true }) {
+                Label(ImportImageReview.classReviewMessage, systemImage: "info.circle")
+                    .font(.callout)
+                    .foregroundStyle(.orange)
+            }
         } header: {
             Text("导入草稿")
         } footer: {
-            Text(draft.summaryText)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(draft.summaryText)
+                if draft.sourceKind == .image {
+                    Text("识图可能犯错，请核对课程、周次和课节。可以点击课程手动修改。")
+                }
+            }
         }
     }
 
     @ViewBuilder
     private func entriesSection(_ draft: ImportDraft, semester: Semester) -> some View {
         Section {
-            ForEach(draft.entries) { entry in
-                HStack(alignment: .top, spacing: 10) {
-                    Button {
-                        toggleSelection(entry, in: draft)
-                    } label: {
-                        Image(systemName: entry.isSelected ? "checkmark.circle.fill" : "circle")
-                            .font(.title3)
-                            .foregroundStyle(entry.isSelected ? Color.accentColor : Color.secondary)
+            ForEach(draft.courseGroups) { group in
+                DisclosureGroup(isExpanded: courseGroupExpansion(group.id)) {
+                    ForEach(group.classResolvedEntries) { entry in
+                        arrangementRow(entry, in: draft)
                     }
-                    .buttonStyle(.borderless)
-                    .disabled(draft.status == .succeeded)
-
-                    Button {
-                        editingEntry = entry
-                    } label: {
-                        ImportEntryRow(entry: entry)
+                    ForEach(group.unresolvedClassGroups) { classGroup in
+                        classGroupRows(classGroup, courseName: group.displayName, in: draft)
                     }
-                    .buttonStyle(.plain)
-                    .disabled(draft.status == .succeeded)
-                }
-                .swipeActions(edge: .trailing) {
-                    if draft.status != .succeeded {
-                        Button("删除", role: .destructive) { remove(entry, in: draft) }
+                } label: {
+                    HStack {
+                        Text(group.displayName)
+                            .font(.body.weight(.medium))
+                            .foregroundStyle(.primary)
+                        Spacer(minLength: 8)
+                        Text("\(group.entries.count) 条安排")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
             }
 
             if draft.status != .succeeded {
-                Button("添加一条记录", systemImage: "plus") {
+                Button("添加一条上课安排", systemImage: "plus") {
                     addEntry(to: draft)
                 }
             }
         } header: {
-            Text("3 · 预览与修正（共 \(draft.entries.count) 条）")
+            Text("3 · 预览与修正（\(draft.courseGroups.count) 门课程 · \(draft.entries.count) 条安排）")
         } footer: {
-            if draft.entries.count > 1 {
-                HStack(spacing: 12) {
-                    Button("全选") { setAll(draft, selected: true) }
-                    Button("全不选") { setAll(draft, selected: false) }
+            VStack(alignment: .leading, spacing: 6) {
+                if draft.entries.count > 1 {
+                    HStack(spacing: 12) {
+                        Button("全选") { setAll(draft, selected: true) }
+                        Button("全不选") { setAll(draft, selected: false) }
+                    }
                 }
-                .font(.caption)
-            } else {
-                Text("点击记录可以修改；勾选决定是否导入。存在问题的记录必须在提交前修正。")
+                Text("同名课程归为一门课，各条安排保留自己的时间、周次和教室。点击安排可修改，勾选决定是否导入。")
+                if draft.entries.contains(where: { $0.imageReview?.requiresClassReview == true }) {
+                    Text("待核对的安排先按原图课堂分组。勾选课堂会选中该课堂的全部安排，也可逐条调整。")
+                }
+            }
+            .font(.caption)
+        }
+    }
+
+    private func courseGroupExpansion(_ id: UUID) -> Binding<Bool> {
+        Binding(get: { !collapsedCourseIDs.contains(id) }, set: { expanded in
+            if expanded { collapsedCourseIDs.remove(id) } else { collapsedCourseIDs.insert(id) }
+        })
+    }
+
+    @ViewBuilder
+    private func classGroupRows(_ group: ImportDraftClassGroup, courseName: String, in draft: ImportDraft) -> some View {
+        let expanded = expandedClassIDs.contains(group.id)
+        // 选择与展开使用并列按钮，点击课堂标题只展开，不同时勾选整组。
+        HStack(spacing: 8) {
+            Button {
+                toggleClassSelection(group, in: draft)
+            } label: {
+                Image(systemName: group.isFullySelected ? "checkmark.circle.fill"
+                    : group.isPartiallySelected ? "minus.circle.fill" : "circle")
+                    .font(.title3)
+                    .foregroundStyle(group.selectedCount > 0 ? Color.accentColor : Color.secondary)
+            }
+            .buttonStyle(.borderless)
+            .disabled(draft.status == .succeeded)
+            .accessibilityLabel("\(courseName)，\(group.displayName)，选择全部安排")
+            .accessibilityValue(group.isFullySelected ? "已全选" : group.isPartiallySelected ? "部分已选" : "未选择")
+
+            Button {
+                if expanded { expandedClassIDs.remove(group.id) } else { expandedClassIDs.insert(group.id) }
+            } label: {
+                HStack(spacing: 8) {
+                    Text(group.displayName)
+                        .foregroundStyle(.primary)
+                    Text("待核对")
+                        .font(.caption2)
+                        .foregroundStyle(.orange)
+                    Spacer(minLength: 4)
+                    Text("\(group.entries.count) 条安排")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Image(systemName: expanded ? "chevron.down" : "chevron.right")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .accessibilityHidden(true)
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("\(courseName)，\(group.displayName)，\(expanded ? "收起" : "展开")，\(group.entries.count)条安排")
+        }
+        if expanded {
+            ForEach(group.entries) { entry in
+                arrangementRow(entry, in: draft)
+                    .padding(.leading, 16)
+            }
+        }
+    }
+
+    private func arrangementRow(_ entry: ImportDraftEntry, in draft: ImportDraft) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Button {
+                toggleSelection(entry, in: draft)
+            } label: {
+                Image(systemName: entry.isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.title3)
+                    .foregroundStyle(entry.isSelected ? Color.accentColor : Color.secondary)
+            }
+            .buttonStyle(.borderless)
+            .disabled(draft.status == .succeeded)
+
+            Button {
+                editingEntry = entry
+            } label: {
+                ImportEntryRow(entry: entry, showsCourseName: false)
+            }
+            .buttonStyle(.plain)
+            .disabled(draft.status == .succeeded)
+        }
+        .swipeActions(edge: .trailing) {
+            if draft.status != .succeeded {
+                Button("删除", role: .destructive) { remove(entry, in: draft) }
             }
         }
     }
@@ -288,7 +411,7 @@ extension ImportScreen {
         } header: {
             Text("4 · 冲突检查")
         } footer: {
-            Text("同一学期内课程名相同即视为同一门课程：草稿里名称一致的记录会合成一门课，学期里已存在的同名课程也会直接并入。导入不会删除或覆盖已有安排；存在时间冲突时需要你确认后才会继续。")
+            Text("同一学期内课程名相同即视为同一门课程，学期里已存在的同名课程会直接并入。导入不会删除或覆盖已有安排；存在时间冲突时需确认后才能继续。")
         }
     }
 
@@ -347,13 +470,22 @@ extension ImportScreen {
 extension ImportScreen {
 
     private func resume(_ draft: ImportDraft) {
+        if draftId != draft.id {
+            collapsedCourseIDs = []
+            expandedClassIDs = []
+        }
+        if imagePreviewDraftId != draft.id {
+            imagePreview = nil
+            imagePreviewDraftId = nil
+        }
         draftId = draft.id
         selectedSemesterId = draft.semesterId
         conflictStrategy = .keepAll
         refreshConflicts(draft)
     }
 
-    private func selectSource(_ kind: ImportSourceKind) {        switch kind {
+    private func selectSource(_ kind: ImportSourceKind) {
+        switch kind {
         case .manualEntry:
             startNewDraft(kind: .manualEntry, addFirstEntry: true)
         case .pastedText:
@@ -362,7 +494,7 @@ extension ImportScreen {
         case .file:
             showsFileImporter = true
         case .image:
-            showsImageNotice = true
+            showsImageImport = true
         }
     }
 
@@ -455,6 +587,16 @@ extension ImportScreen {
         }
     }
 
+    private func toggleClassSelection(_ group: ImportDraftClassGroup, in draft: ImportDraft) {
+        do {
+            _ = try store.setImportSelection(draftId: draft.id, entryIds: Set(group.entries.map(\.id)),
+                isSelected: !group.isFullySelected)
+            refreshConflicts(store.importDraft(id: draft.id))
+        } catch {
+            errorMessage = error.userMessage
+        }
+    }
+
     private func addEntry(to draft: ImportDraft) {
         do {
             let entry = try store.addManualImportEntry(draftId: draft.id)
@@ -514,6 +656,8 @@ extension ImportScreen {
             _ = try store.cancelImportDraft(draftId: draft.id)
             try store.deleteImportDraft(id: draft.id)
             draftId = nil
+            imagePreview = nil
+            imagePreviewDraftId = nil
             conflicts = []
         } catch {
             errorMessage = error.userMessage
